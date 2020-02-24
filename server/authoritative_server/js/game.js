@@ -23,7 +23,7 @@ const config = {
         // autoCenter: Phaser.Scale.CENTER_BOTH,
         width: window.innerWidth,
         height: window.innerHeight
-}
+    }
 };
 
 function preload() {
