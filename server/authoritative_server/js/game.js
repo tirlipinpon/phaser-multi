@@ -29,28 +29,18 @@ const config = {
 function preload() {
     this.load.image('ship', 'assets/spaceShips_001.png');
     this.load.image('star', 'assets/star_gold.png');
+    this.load.image('beam', 'assets/beam.png');
 }
 
 function create() {
     const self = this;
-    this.players = self.physics.add.group();
-
-    this.scores = {
-        blue: 0,
-        red: 0
-    };
+    this.playersGroup = self.physics.add.group();
 
     this.star = self.physics.add.image(randomPosition(700), randomPosition(500), 'star');
 
-    self.physics.add.collider(this.players);
-    self.physics.add.overlap(this.players, this.star, function (star, player) {
-        if (players[player.playerId].team === 'red') {
-            self.scores.red += 10;
-        } else {
-            self.scores.blue += 10;
-        }
+    self.physics.add.collider(this.playersGroup);
+    self.physics.add.overlap(this.playersGroup, this.star, function (star, player) {
         self.star.setPosition(randomPosition(700), randomPosition(500));
-        io.emit('updateScore', self.scores);
         io.emit('starLocation', {x: self.star.x, y: self.star.y});
     });
 
@@ -58,7 +48,6 @@ function create() {
         console.log('a user connected');
         // create a new player and add it to our players object
         players[socket.id] = {
-            rotation: 0,
             x: Math.floor(Math.random() * 700) + 50,
             y: Math.floor(Math.random() * 500) + 50,
             playerId: socket.id,
@@ -66,8 +55,11 @@ function create() {
             input: {
                 left: false,
                 right: false,
-                up: false
-            }
+                up: false,
+                down: false
+
+            },
+            projectilesGroup: []
         };
         // add player to server
         addPlayer(self, players[socket.id]);
@@ -80,8 +72,6 @@ function create() {
 
         // send the star object to the new player
         socket.emit('starLocation', {x: self.star.x, y: self.star.y});
-        // send the current scores
-        socket.emit('updateScore', self.scores);
 
         socket.on('disconnect', function () {
             console.log('user disconnected');
@@ -96,32 +86,43 @@ function create() {
         socket.on('playerInput', function (inputData) {
             handlePlayerInput(self, socket.id, inputData);
         });
+        socket.on('playerSpacebar', function () {
+            handlePlayerSpacebar(self, players[socket.id]);
+        });
     });
 }
 
 function update() {
     const self = this;
-    this.players.getChildren().forEach(function (player) {
+
+    this.playersGroup.getChildren().forEach(function (player) {
         const input = players[player.playerId].input;
+
         if (input.left) {
-            player.setAngularVelocity(-300);
+            player.setVelocityX(-200);
         } else if (input.right) {
-            player.setAngularVelocity(300);
+            player.setVelocityX(200);
         } else {
-            player.setAngularVelocity(0);
+            player.setVelocityX(0);
         }
 
         if (input.up) {
-            self.physics.velocityFromRotation(player.rotation + 1.5, 200, player.body.acceleration);
+            player.setVelocityY(-200);
+        } else if (input.down) {
+            player.setVelocityY(200);
         } else {
-            player.setAcceleration(0);
+            player.setVelocityY(0);
         }
 
         players[player.playerId].x = player.x;
         players[player.playerId].y = player.y;
-        players[player.playerId].rotation = player.rotation;
+
+        // players[player.playerId].projectilesGroup.getChildren().forEach(function (beam) {
+        //     console.log(beam);
+        // });
     });
-    self.physics.world.wrap(this.players, 5);
+    self.physics.world.wrap(this.playersGroup, 5);
+
     io.emit('playerUpdates', players);
 }
 
@@ -130,27 +131,35 @@ function randomPosition(max) {
 }
 
 function handlePlayerInput(self, playerId, input) {
-    self.players.getChildren().forEach(function (player) {
+    self.playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.playerId) {
             players[player.playerId].input = input;
         }
     });
 }
 
+function handlePlayerSpacebar(self, playerInfo) {
+    // playerInfo.playersGroup.getChildren().forEach(function (player) {
+    //     if (playerInfo.playerId === player.playerId) {
+    //         addBeam(self, playerInfo);
+    //     }
+    // });
+}
+
+function addBeam(self, playerInfo) {
+    const beam = self.physics.add.image(playerInfo.x, playerInfo.y - 16, 'beam');
+    beam.playerId = playerInfo.playerId;
+    playerInfo.projectilesGroup.add(beam);
+}
+
 function addPlayer(self, playerInfo) {
-    const player = self.physics.add
-        .image(playerInfo.x, playerInfo.y, 'ship')
-        .setOrigin(0.5, 0.5)
-        .setDisplaySize(53, 40);
-    // player.setDrag(100);
-    // player.setAngularDrag(100);
-    // player.setMaxVelocity(200);
+    const player = self.physics.add.image(playerInfo.x, playerInfo.y, 'ship');
     player.playerId = playerInfo.playerId;
-    self.players.add(player);
+    self.playersGroup.add(player);
 }
 
 function removePlayer(self, playerId) {
-    self.players.getChildren().forEach(function (player) {
+    self.playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.playerId) {
             player.destroy();
         }
