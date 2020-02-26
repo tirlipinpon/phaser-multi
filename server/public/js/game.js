@@ -30,17 +30,21 @@ function preload() {
     this.load.image('ship', 'assets/spaceShips_001.png');
     this.load.image('otherPlayer', 'assets/enemyBlack5.png');
     this.load.image('star', 'assets/star_gold.png');
+    this.load.spritesheet('beam', 'assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
 }
 
 function create() {
     var self = this;
     this.socket = io();
-    this.players = this.add.group();
+    self.playersGroup = this.add.group();
+    self.projectilesGroup = this.add.group();
+
+    animsCreate(self);
 
     this.socket.on('currentPlayers', function (players) {
         Object.keys(players).forEach(function (id) {
             if (players[id].playerId === self.socket.id) {
-                self.player =  displayPlayers(self, players[id], 'ship');
+                self.player = displayPlayers(self, players[id], 'ship');
             } else {
                 self.player = displayPlayers(self, players[id], 'otherPlayer');
             }
@@ -51,10 +55,13 @@ function create() {
     });
     this.socket.on('playerUpdates', function (players) {
         Object.keys(players).forEach(function (id) {
-            self.players.getChildren().forEach(function (player) {
+            self.playersGroup.getChildren().forEach(function (player) {
                 if (players[id].playerId === player.playerId) {
                     player.setPosition(players[id].x, players[id].y);
                     // player.projectiles = players[id].projectiles;
+                }
+                if (players[id].projectiles.length) {
+
                 }
             });
         });
@@ -73,7 +80,7 @@ function create() {
         }
     });
     this.socket.on('disconnect', function (playerId) {
-        self.players.getChildren().forEach(function (player) {
+        self.playersGroup.getChildren().forEach(function (player) {
             if (playerId === player.playerId) {
                 player.destroy();
             }
@@ -87,6 +94,11 @@ function create() {
     this.rightKeyPressed = false;
     this.upKeyPressed = false;
     this.downKeyPressed = false;
+
+
+    // this.physics.add.collider(this.projectilesGroup, this.playersGroup, function (projectile, player) {
+    //     projectile.destroy();
+    // });
 }
 
 function update() {
@@ -108,7 +120,7 @@ function update() {
         this.upKeyPressed = true;
     } else if (this.cursors.down.isDown) {
         this.downKeyPressed = true;
-    }else {
+    } else {
         this.upKeyPressed = false;
         this.downKeyPressed = false;
     }
@@ -127,19 +139,34 @@ function update() {
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-        if (this.player.active) {
-            this.socket.emit('playerSpacebar');
-        }
+        this.socket.emit('playerSpacebar');
+        // displayBeam(this, this.player)
+
     }
 }
 
+function animsCreate(self) {
+    self.anims.create({
+        key: 'beam_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('beam', {
+            start: 1,
+            end: 2
+        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+}
+
+function displayBeam(self, player) {
+    new Beam(self, player);
+}
+
 function displayPlayers(self, playerInfo, sprite) {
-    const player = self.add
-        .sprite(playerInfo.x, playerInfo.y, sprite)
+    const player = self.add.sprite(playerInfo.x, playerInfo.y, sprite);
     if (playerInfo.team === 'blue') player.setTint(0x0000ff);
     else player.setTint(0xff0000);
     player.playerId = playerInfo.playerId;
     // player.projectiles = playerInfo.projectiles;
-    self.players.add(player);
+    self.playersGroup.add(player);
     return player;
 }
