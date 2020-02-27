@@ -61,6 +61,9 @@ function create() {
                 }
 
                 player.projectilesGroup.getChildren().forEach(function (beam) {
+                    // if (players[id].playerId !== player.playerId) {
+                    //     displayOpponentBeam(self, player)
+                    // }
                     beam.update();
                 });
 
@@ -86,6 +89,15 @@ function create() {
                 player.destroy();
             }
         });
+    });
+    this.socket.on('otherPlayerFire', function (playerinfo) {
+        self.playersGroup.getChildren().forEach(function (player) {
+            if (playerinfo.playerId === player.playerId) {
+                console.log(player);
+                displayBeam(self, player);
+            }
+        });
+
     });
 
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -141,7 +153,6 @@ function update() {
     if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
         this.socket.emit('playerSpacebar');
         displayBeam(this, this.player);
-
     }
 }
 
@@ -159,6 +170,15 @@ function animsCreate(self) {
 
 function displayBeam(self, player) {
     var beam = new Beam(self, player);
+}
+
+function displayOpponentBeam(self, playerInfo) {
+    const beam = self.physics.add.image(playerInfo.x, playerInfo.y - 16, 'beam');
+    var beamToEmit = {
+        name: 'beam',
+        velocity: -250
+    };
+    beam.body.velocity.y = beamToEmit.velocity;
 }
 
 function displayPlayers(self, playerInfo, sprite) {

@@ -87,7 +87,7 @@ function create() {
             handlePlayerInput(self, socket.id, inputData);
         });
         socket.on('playerSpacebar', function () {
-            handlePlayerSpacebar(self, socket.id);
+            handlePlayerSpacebar(self, socket.id, socket);
         });
     });
 }
@@ -141,17 +141,17 @@ function handlePlayerInput(self, playerId, input) {
     });
 }
 
-function handlePlayerSpacebar(self, playerId) {
+function handlePlayerSpacebar(self, playerId, socket) {
     self.playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.playerId) {
             addBeam(self, player);
+            socket.broadcast.emit('otherPlayerFire', players[socket.id]);
         }
     });
 }
 
 function addBeam(self, playerInfo) {
     const beam = self.physics.add.image(playerInfo.x, playerInfo.y - 16, 'beam');
-    beam.beamId = playerInfo.playerId;
     var beamToEmit = {
         name: 'beam',
         velocity: -250
