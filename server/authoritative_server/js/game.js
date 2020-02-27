@@ -35,7 +35,6 @@ function preload() {
 function create() {
     const self = this;
     this.playersGroup = self.physics.add.group();
-    this.projectilesGroup = self.physics.add.group();
 
     this.star = self.physics.add.image(randomPosition(700), randomPosition(500), 'star');
 
@@ -46,6 +45,7 @@ function create() {
     });
 
     io.on('connection', function (socket) {
+        var cptBeam;
         console.log('a user connected');
         // create a new player and add it to our players object
         players[socket.id] = {
@@ -59,8 +59,7 @@ function create() {
                 up: false,
                 down: false
 
-            },
-            projectiles: []
+            }
         };
         // add player to server
         addPlayer(self, players[socket.id]);
@@ -88,8 +87,7 @@ function create() {
             handlePlayerInput(self, socket.id, inputData);
         });
         socket.on('playerSpacebar', function () {
-            handlePlayerSpacebar(self, players[socket.id]);
-            console.log(players[socket.id].projectiles.length);
+            handlePlayerSpacebar(self, socket.id);
         });
     });
 }
@@ -118,18 +116,12 @@ function update() {
         players[player.playerId].x = player.x;
         players[player.playerId].y = player.y;
 
-        if (players[player.playerId].projectiles.length) {
-            players[player.playerId].projectiles = players[player.playerId].projectiles.filter(function (beam) {
-                if (beam.y < 32) {
-                    removeBeam(self, beam);
-                    return;
-                } else {
-                    return beam;
-                }
-            });
-            console.log(' - ' + players[player.playerId].projectiles.length);
-        }
-
+        player.projectilesGroup.getChildren().forEach(function (beam) {
+            if (beam.y < 132) {
+                beam.destroy();
+                console.log(' - ' + player.projectilesGroup.getChildren().length);
+            }
+        });
     });
     // when a ship goes off the screen, force ship to appear on the other side of the screen.
     self.physics.world.wrap(this.playersGroup, 5);
@@ -149,27 +141,30 @@ function handlePlayerInput(self, playerId, input) {
     });
 }
 
-function handlePlayerSpacebar(self, playerInfo) {
-     addBeam(self, playerInfo);
+function handlePlayerSpacebar(self, playerId) {
+    self.playersGroup.getChildren().forEach(function (player) {
+        if (playerId === player.playerId) {
+            addBeam(self, player);
+        }
+    });
 }
 
 function addBeam(self, playerInfo) {
     const beam = self.physics.add.image(playerInfo.x, playerInfo.y - 16, 'beam');
     beam.beamId = playerInfo.playerId;
-    var beamToEmit = beam[playerInfo.playerId] = {
-        x: playerInfo.x,
-        y: playerInfo.y - 16,
-        name: 'beam'
+    var beamToEmit = {
+        name: 'beam',
+        velocity: -250
     };
-    beam.body.velocity.y = -1;
-    playerInfo.projectiles.push(beamToEmit);
-    self.projectilesGroup.add(beam);
-    // console.log(' + ' + playerInfo.projectiles.length);
+    beam.body.velocity.y = beamToEmit.velocity;
+    playerInfo.projectilesGroup.add(beam);
+    console.log(' ++++ ' + playerInfo.projectilesGroup.getChildren().length);
 }
 
 function addPlayer(self, playerInfo) {
     const player = self.physics.add.image(playerInfo.x, playerInfo.y, 'ship');
     player.playerId = playerInfo.playerId;
+    player.projectilesGroup = self.add.group();
     self.playersGroup.add(player);
 }
 
@@ -177,14 +172,6 @@ function removePlayer(self, playerId) {
     self.playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.playerId) {
             player.destroy();
-        }
-    });
-}
-
-function removeBeam(self, beamId) {
-    self.projectilesGroup.getChildren().forEach(function (beam) {
-        if (beam.beamId === beamId) {
-            beam.destroy();
         }
     });
 }

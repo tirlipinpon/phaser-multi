@@ -37,7 +37,6 @@ function create() {
     var self = this;
     this.socket = io();
     self.playersGroup = this.add.group();
-    self.projectilesGroup = this.add.group();
 
     animsCreate(self);
 
@@ -46,12 +45,12 @@ function create() {
             if (players[id].playerId === self.socket.id) {
                 self.player = displayPlayers(self, players[id], 'ship');
             } else {
-                self.player = displayPlayers(self, players[id], 'otherPlayer');
+                displayPlayers(self, players[id], 'otherPlayer');
             }
         });
     });
     this.socket.on('newPlayer', function (playerInfo) {
-        self.player = displayPlayers(self, playerInfo, 'otherPlayer');
+        displayPlayers(self, playerInfo, 'otherPlayer');
     });
     this.socket.on('playerUpdates', function (players) {
         Object.keys(players).forEach(function (id) {
@@ -60,9 +59,11 @@ function create() {
                     player.setPosition(players[id].x, players[id].y);
                     // player.projectiles = players[id].projectiles;
                 }
-                if (players[id].projectiles.length) {
 
-                }
+                player.projectilesGroup.getChildren().forEach(function (beam) {
+                    beam.update();
+                });
+
             });
         });
     });
@@ -94,7 +95,6 @@ function create() {
     this.rightKeyPressed = false;
     this.upKeyPressed = false;
     this.downKeyPressed = false;
-
 
     // this.physics.add.collider(this.projectilesGroup, this.playersGroup, function (projectile, player) {
     //     projectile.destroy();
@@ -140,7 +140,7 @@ function update() {
 
     if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
         this.socket.emit('playerSpacebar');
-        // displayBeam(this, this.player)
+        displayBeam(this, this.player);
 
     }
 }
@@ -158,7 +158,7 @@ function animsCreate(self) {
 }
 
 function displayBeam(self, player) {
-    new Beam(self, player);
+    var beam = new Beam(self, player);
 }
 
 function displayPlayers(self, playerInfo, sprite) {
@@ -166,7 +166,7 @@ function displayPlayers(self, playerInfo, sprite) {
     if (playerInfo.team === 'blue') player.setTint(0x0000ff);
     else player.setTint(0xff0000);
     player.playerId = playerInfo.playerId;
-    // player.projectiles = playerInfo.projectiles;
+    player.projectilesGroup = self.add.group();
     self.playersGroup.add(player);
     return player;
 }
