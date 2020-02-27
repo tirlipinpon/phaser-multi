@@ -36,16 +36,15 @@ function create() {
     const self = this;
     this.playersGroup = self.physics.add.group();
 
-    this.star = self.physics.add.image(randomPosition(700), randomPosition(500), 'star');
+    self.star = self.physics.add.image(randomPosition(700), randomPosition(500), 'star');
 
     self.physics.add.collider(this.playersGroup);
-    self.physics.add.overlap(this.playersGroup, this.star, function (star, player) {
+    self.physics.add.overlap(this.playersGroup, self.star, function (star, player) {
         self.star.setPosition(randomPosition(700), randomPosition(500));
         io.emit('starLocation', {x: self.star.x, y: self.star.y});
     });
 
     io.on('connection', function (socket) {
-        var cptBeam;
         console.log('a user connected');
         // create a new player and add it to our players object
         players[socket.id] = {
@@ -62,7 +61,7 @@ function create() {
             }
         };
         // add player to server
-        addPlayer(self, players[socket.id]);
+        addPlayer(self, players[socket.id], self.star);
 
         // send the players object to the new player
         socket.emit('currentPlayers', players);
@@ -161,10 +160,14 @@ function addBeam(self, playerInfo) {
     console.log(' ++++ ' + playerInfo.projectilesGroup.getChildren().length);
 }
 
-function addPlayer(self, playerInfo) {
+function addPlayer(self, playerInfo, star) {
     const player = self.physics.add.image(playerInfo.x, playerInfo.y, 'ship');
     player.playerId = playerInfo.playerId;
     player.projectilesGroup = self.add.group();
+    self.physics.add.overlap(player.projectilesGroup, star, function (star, player) {
+        self.star.setPosition(randomPosition(700), randomPosition(500));
+        io.emit('starLocation', {x: self.star.x, y: self.star.y});
+    });
     self.playersGroup.add(player);
 }
 

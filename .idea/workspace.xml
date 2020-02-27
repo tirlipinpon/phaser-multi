@@ -4,8 +4,6 @@
     <list default="true" id="b5cd5250-1765-4680-b5c7-24d984021407" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/authoritative_server/js/game.js" afterPath="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/js/beam.js" afterPath="$PROJECT_DIR$/server/public/js/beam.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/js/game.js" afterPath="$PROJECT_DIR$/server/public/js/game.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,23 +23,24 @@
           <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="352">
-                  <caret line="147" column="50" lean-forward="false" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="50" />
+                <state relative-caret-position="244">
+                  <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
                   <folding>
                     <element signature="e#140#256#0" expanded="false" />
                     <element signature="e#269#349#0" expanded="false" />
                     <element signature="e#384#578#0" expanded="false" />
-                    <element signature="e#1667#1797#0" expanded="false" />
-                    <element signature="e#2274#2625#0" expanded="false" />
-                    <element signature="e#3129#3179#0" expanded="false" />
-                    <element signature="e#3202#3251#0" expanded="false" />
-                    <element signature="e#3257#3304#0" expanded="false" />
-                    <element signature="e#3327#3377#0" expanded="false" />
-                    <element signature="e#3399#3448#0" expanded="false" />
-                    <element signature="e#3454#3501#0" expanded="false" />
+                    <element signature="e#1646#1776#0" expanded="false" />
+                    <element signature="e#2264#2615#0" expanded="false" />
+                    <element signature="e#3119#3169#0" expanded="false" />
+                    <element signature="e#3192#3241#0" expanded="false" />
+                    <element signature="e#3247#3294#0" expanded="false" />
+                    <element signature="e#3317#3367#0" expanded="false" />
+                    <element signature="e#3389#3438#0" expanded="false" />
+                    <element signature="e#3444#3491#0" expanded="false" />
                     <element signature="n#!!block;n#randomPosition#0" expanded="false" />
                     <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-                    <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+                    <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+                    <element signature="n#!!block;n#addBeam#0" expanded="false" />
                     <element signature="n#!!block;n#removePlayer#0" expanded="false" />
                   </folding>
                 </state>
@@ -65,13 +64,14 @@
           <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/public/js/game.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="399">
-                  <caret line="96" column="32" lean-forward="false" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+                <state relative-caret-position="17">
+                  <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="112" selection-end-column="10" />
                   <folding>
                     <element signature="e#47#656#0" expanded="false" />
                     <element signature="e#1862#2020#0" expanded="false" />
                     <element signature="e#2689#2896#0" expanded="false" />
                     <element signature="e#2952#3135#0" expanded="false" />
+                    <element signature="e#3198#3439#0" expanded="false" />
                     <element signature="e#4080#4123#0" expanded="false" />
                     <element signature="e#4210#4292#0" expanded="false" />
                     <element signature="e#4326#4367#0" expanded="false" />
@@ -109,7 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Phaser</find>
       <find>playerInput</find>
       <find>player</find>
       <find>getCh</find>
@@ -139,6 +138,7 @@
       <find>projectile</find>
       <find>Group.</find>
       <find>playerSpacebar</find>
+      <find>this.star</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -157,8 +157,8 @@
         <option value="$PROJECT_DIR$/server/authoritative_server/js/beam.js" />
         <option value="$PROJECT_DIR$/server/public/index.html" />
         <option value="$PROJECT_DIR$/server/public/js/beam.js" />
-        <option value="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
         <option value="$PROJECT_DIR$/server/public/js/game.js" />
+        <option value="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
       </list>
     </option>
   </component>
@@ -199,6 +199,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -222,46 +224,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -307,9 +269,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -634,12 +594,13 @@
       <workItem from="1582663624566" duration="34000" />
       <workItem from="1582720193476" duration="12618000" />
       <workItem from="1582803411858" duration="7953000" />
-      <workItem from="1582831048419" duration="3657000" />
+      <workItem from="1582831048419" duration="3732000" />
+      <workItem from="1582835550921" duration="644000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66720000" />
+    <option name="totallyTimeSpent" value="67439000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="0" />
@@ -653,20 +614,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16684046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16684046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10218978" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1119403" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1130064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -710,23 +671,24 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1659">
-          <caret line="121" column="73" lean-forward="false" selection-start-line="121" selection-start-column="73" selection-end-line="121" selection-end-column="73" />
+        <state relative-caret-position="2037">
+          <caret line="147" column="50" lean-forward="false" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="50" />
           <folding>
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -741,6 +703,62 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
+            <element signature="e#4080#4123#0" expanded="false" />
+            <element signature="e#4210#4292#0" expanded="false" />
+            <element signature="e#4326#4367#0" expanded="false" />
+            <element signature="e#4403#4446#0" expanded="false" />
+            <element signature="e#4452#4531#0" expanded="false" />
+            <element signature="e#4694#4908#0" expanded="false" />
+            <element signature="e#4736#4900#0" expanded="false" />
+            <element signature="n#!!block;n#animsCreate#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/js/beam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1659">
+          <caret line="121" column="73" lean-forward="false" selection-start-line="121" selection-start-column="73" selection-end-line="121" selection-end-column="73" />
+          <folding>
+            <element signature="e#140#256#0" expanded="false" />
+            <element signature="e#269#349#0" expanded="false" />
+            <element signature="e#384#578#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
+            <element signature="n#!!block;n#randomPosition#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
+            <element signature="n#!!block;n#removePlayer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#1862#2020#0" expanded="false" />
+            <element signature="e#2689#2896#0" expanded="false" />
+            <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -769,17 +787,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -794,6 +813,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -822,17 +842,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -847,6 +868,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -874,17 +896,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -899,6 +922,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -926,17 +950,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -951,6 +976,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -971,17 +997,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -996,6 +1023,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -1016,17 +1044,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -1041,6 +1070,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -1061,17 +1091,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -1086,6 +1117,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -1113,17 +1145,18 @@
             <element signature="e#140#256#0" expanded="false" />
             <element signature="e#269#349#0" expanded="false" />
             <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
             <element signature="n#!!block;n#randomPosition#0" expanded="false" />
             <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
             <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
@@ -1152,6 +1185,7 @@
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -1229,7 +1263,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1243,45 +1276,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/js/beam.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="147">
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="147" column="50" lean-forward="false" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="50" />
-          <folding>
-            <element signature="e#140#256#0" expanded="false" />
-            <element signature="e#269#349#0" expanded="false" />
-            <element signature="e#384#578#0" expanded="false" />
-            <element signature="e#1667#1797#0" expanded="false" />
-            <element signature="e#2274#2625#0" expanded="false" />
-            <element signature="e#3129#3179#0" expanded="false" />
-            <element signature="e#3202#3251#0" expanded="false" />
-            <element signature="e#3257#3304#0" expanded="false" />
-            <element signature="e#3327#3377#0" expanded="false" />
-            <element signature="e#3399#3448#0" expanded="false" />
-            <element signature="e#3454#3501#0" expanded="false" />
-            <element signature="n#!!block;n#randomPosition#0" expanded="false" />
-            <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
-            <element signature="n#!!block;n#addPlayer#0" expanded="false" />
-            <element signature="n#!!block;n#removePlayer#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="96" column="32" lean-forward="false" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+        <state relative-caret-position="17">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="112" selection-end-column="10" />
           <folding>
             <element signature="e#47#656#0" expanded="false" />
             <element signature="e#1862#2020#0" expanded="false" />
             <element signature="e#2689#2896#0" expanded="false" />
             <element signature="e#2952#3135#0" expanded="false" />
+            <element signature="e#3198#3439#0" expanded="false" />
             <element signature="e#4080#4123#0" expanded="false" />
             <element signature="e#4210#4292#0" expanded="false" />
             <element signature="e#4326#4367#0" expanded="false" />
@@ -1290,6 +1300,31 @@
             <element signature="e#4694#4908#0" expanded="false" />
             <element signature="e#4736#4900#0" expanded="false" />
             <element signature="n#!!block;n#animsCreate#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#140#256#0" expanded="false" />
+            <element signature="e#269#349#0" expanded="false" />
+            <element signature="e#384#578#0" expanded="false" />
+            <element signature="e#1646#1776#0" expanded="false" />
+            <element signature="e#2264#2615#0" expanded="false" />
+            <element signature="e#3119#3169#0" expanded="false" />
+            <element signature="e#3192#3241#0" expanded="false" />
+            <element signature="e#3247#3294#0" expanded="false" />
+            <element signature="e#3317#3367#0" expanded="false" />
+            <element signature="e#3389#3438#0" expanded="false" />
+            <element signature="e#3444#3491#0" expanded="false" />
+            <element signature="n#!!block;n#randomPosition#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerInput#0" expanded="false" />
+            <element signature="n#!!block;n#handlePlayerSpacebar#0" expanded="false" />
+            <element signature="n#!!block;n#addBeam#0" expanded="false" />
+            <element signature="n#!!block;n#removePlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
