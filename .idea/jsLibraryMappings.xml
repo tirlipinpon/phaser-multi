@@ -3,6 +3,6 @@
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$/server/authoritative_server/js/game.js" libraries="{ECMAScript 6}" />
     <file url="file://$PROJECT_DIR$/server/index.js" libraries="{ECMAScript 6, WebGL}" />
-    <file url="file://$PROJECT_DIR$/server/public/js/beam.js" libraries="{ECMAScript 6}" />
+    <file url="file://$PROJECT_DIR$/server/public/desktop/js/beam.js" libraries="{ECMAScript 6}" />
   </component>
 </project>

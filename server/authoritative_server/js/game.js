@@ -47,30 +47,9 @@ function create() {
     io.on('connection', function (socket) {
         console.log('a user connected');
         // create a new player and add it to our players object
-        players[socket.id] = {
-            x: Math.floor(Math.random() * 700) + 50,
-            y: Math.floor(Math.random() * 500) + 50,
-            playerId: socket.id,
-            team: (Math.floor(Math.random() * 2) == 0) ? 'red' : 'blue',
-            input: {
-                left: false,
-                right: false,
-                up: false,
-                down: false
-
-            }
-        };
+        players[socket.id] = getNewPlayers(socket);
         // add player to server
         addPlayer(self, players[socket.id], self.star);
-
-        // send the players object to the new player
-        socket.emit('currentPlayers', players);
-
-        // update all other players of the new player
-        socket.broadcast.emit('newPlayer', players[socket.id]);
-
-        // send the star object to the new player
-        socket.emit('starLocation', {x: self.star.x, y: self.star.y});
 
         socket.on('disconnect', function () {
             console.log('user disconnected');
@@ -88,7 +67,26 @@ function create() {
         socket.on('playerSpacebar', function () {
             handlePlayerSpacebar(self, socket.id, socket);
         });
+
+        socket.on('mobileConnected', function () {
+            // send the players object to the new player
+            socket.emit('currentPlayers', players);
+
+            // update all other players of the new player
+            socket.broadcast.emit('newPlayer', players[socket.id]);
+
+            // send the star object to the new player
+            socket.emit('starLocation', {x: self.star.x, y: self.star.y});
+        });
+        socket.on('orientationGamma', function (gamma) {
+            console.log(gamma)
+        });
+        socket.on('orientationAlpha', function (gamma) {
+            console.log(gamma)
+        });
     });
+
+
 }
 
 function update() {
@@ -126,6 +124,22 @@ function update() {
     self.physics.world.wrap(this.playersGroup, 5);
 
     io.emit('playerUpdates', players);
+}
+
+function getNewPlayers(socket) {
+    return {
+        x: Math.floor(Math.random() * 700) + 50,
+        y: Math.floor(Math.random() * 500) + 50,
+        playerId: socket.id,
+        team: (Math.floor(Math.random() * 2) == 0) ? 'red' : 'blue',
+        input: {
+            left: false,
+            right: false,
+            up: false,
+            down: false
+
+        }
+    };
 }
 
 function randomPosition(max) {

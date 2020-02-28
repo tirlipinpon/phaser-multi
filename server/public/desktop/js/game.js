@@ -23,14 +23,18 @@ window.onload = function () {
             height: window.innerHeight
         }
     };
-
     var game = new Phaser.Game(config);
 };
 function preload() {
-    this.load.image('ship', 'assets/spaceShips_001.png');
-    this.load.image('otherPlayer', 'assets/enemyBlack5.png');
-    this.load.image('star', 'assets/star_gold.png');
-    this.load.spritesheet('beam', 'assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
+    this.load.image('ship', '/public/desktop/assets/spaceShips_001.png');
+    this.load.image('otherPlayer', '/public/desktop/assets/enemyBlack5.png');
+    this.load.image('star', '/public/desktop/assets/star_gold.png');
+    this.load.spritesheet('beam', '/public/desktop/assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
+
+    this.load.image('background', '/public/desktop/assets/background.png');
+    this.load.image('parallax_1', '/public/desktop/assets/parallax1.png');
+    this.load.image('parallax_2', '/public/desktop/assets/parallax2.png');
+    this.load.image('stars', '/public/desktop/assets/stars.png');
 }
 
 function create() {
@@ -108,6 +112,7 @@ function create() {
     this.upKeyPressed = false;
     this.downKeyPressed = false;
 
+    initBackground(self);
     // this.physics.add.collider(this.projectilesGroup, this.playersGroup, function (projectile, player) {
     //     projectile.destroy();
     // });
@@ -154,6 +159,17 @@ function update() {
         this.socket.emit('playerSpacebar');
         displayBeam(this, this.player);
     }
+
+    moveBackground(self)
+}
+
+function moveBackground(self) {
+    self.background.tilePositionY -= 0.5;
+    self.parallax_1.tilePositionY -= 3;
+    self.parallax_2.tilePositionY -= 3;
+    self.stars.tilePositionY -= 1;
+    self.stars2.tilePositionY -= .8;
+    self.stars2.scaleX = .8;
 }
 
 function animsCreate(self) {
@@ -189,4 +205,31 @@ function displayPlayers(self, playerInfo, sprite) {
     player.projectilesGroup = self.add.group();
     self.playersGroup.add(player);
     return player;
+}
+
+function initBackground(self) {
+    this.background = setBackground(self, 'background', 1);
+    this.stars = setBackground(self, 'stars', 0.2);
+    this.stars2 = setBackground(self, 'stars', 0.1);
+    this.parallax_1 = setParallax(self, 0, 0, 50, 'parallax_1');
+    this.parallax_2 = setParallax(self, self.game.config.width - 50, 0, 50, 'parallax_2');
+}
+
+function setBackground(self, name, alpha) {
+    this.background = self.add.tileSprite(0, 0, self.game.config.width, self.game.config.height, name);
+    this.background.setOrigin(0, 0);
+    this.background.setDisplaySize(self.game.config.width, self.game.config.height);
+    this.background.setAlpha(alpha)
+
+    return this.background;
+}
+
+function setParallax(self, x, y, size, name) {
+    this.parallax = self.add.tileSprite(x, y, size, self.game.config.height, name);
+    this.parallax.setOrigin(0, 0);
+    this.parallax.alpha = 0.5;
+    // this.parallax_1.scaleX = 1.2;
+    // this.parallax_1.setPosition(-35, 0);
+    // this.parallax_1.setScrollFactor(0);
+    return this.parallax;
 }

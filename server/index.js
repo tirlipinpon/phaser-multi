@@ -6,20 +6,22 @@ const jsdom = require('jsdom'); // allow us to use the DOM API on the server
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-io = require('socket.io').listen(server);
+      io = require('socket.io').listen(server);
 const Datauri = require('datauri');
 const datauri = new Datauri();
 const {JSDOM} = jsdom;
 
-app.use(express.static(__dirname + '/public'));
+app.use('/public/mobile', express.static(__dirname + '/public/mobile'));
+app.use('/public/desktop', express.static(__dirname + '/public/desktop'));
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
+app.get('/public/mobile', function (req, res) {
+    res.sendFile(__dirname + '/public/mobile/index.html');
 });
 
-// server.listen(8081, function () {
-//     console.log('Listening on ' + ${server.address().port});
-// });
+app.get('/public/desktop', function (req, res) {
+    res.sendFile(__dirname + '/public/desktop/index.html');
+});
+
 
 /**
  *  used JSDOM’s fromFile method to load the index.html
