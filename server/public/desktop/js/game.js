@@ -24,7 +24,12 @@ window.onload = function () {
         }
     };
     var game = new Phaser.Game(config);
+    this.socket = io();
 };
+window.onbeforeunload = function (e) {
+    this.socket.emit('desktop disconnected');
+};
+
 function preload() {
     this.load.image('ship', '/public/desktop/assets/spaceShips_001.png');
     this.load.image('otherPlayer', '/public/desktop/assets/enemyBlack5.png');
@@ -39,8 +44,9 @@ function preload() {
 
 function create() {
     var self = this;
-    this.socket = io();
+
     self.playersGroup = this.add.group();
+    socket.emit('desktop connected');
 }
 
 function update() {

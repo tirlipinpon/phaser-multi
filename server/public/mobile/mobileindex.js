@@ -7,6 +7,8 @@ window.onload = function () {
     this.socket = io();
     var gamma; // gauche g0-    droite g0+
     var beta;  // haut b90-     bas b90+
+    var playerLength;
+    var playerColor;
 
     var leftKeyPressed = false;
     var rightKeyPressed = false;
@@ -55,17 +57,41 @@ window.onload = function () {
         button.addEventListener('click', enableNoSleep.bind(null, self), false);
 
         function enableNoSleep(self) {
-            self.socket.emit('mobileConnected');
-            self.socket.on('start', function () {
-                ready = true;
-            });
-            noSleep.enable();
-            button.removeEventListener('touchstart', enableNoSleep, false);
+            button.removeEventListener('click', handleOrientation.bind(event, self), false);
+            if (!playerLength) {
+                self.socket.emit('mobile connected');
+                self.socket.on('start', function () {
+                    ready = true;
+                });
+                self.socket.on('player added', function (pl, pc) {
+                    // TODO: change button if first player
+                    playerLength = pl;
+                    playerColor = pc;
+                    button.innerHTML = playerLength;
+                    document.body.style.background = playerColor;
+                });
+                noSleep.enable();
+                button.addEventListener('click', startGame, false);
+                self.socket.on('party full', function (message) {
+                    button.innerHTML = message;
+                });
+                self.socket.on('disconnected', function (message) {
+                    window.location.reload(false);
+                });
+            }
+        }
+        function startGame() {
+            button.removeEventListener('click', startGame, false);
+            if (playerLength) {
+                self.socket.emit('start game');
+            }
         }
     }
+};
 
-
-}
+window.onbeforeunload = function (e) {
+    this.socket.emit('mobile disconnected');
+};
 
 const isMobile = function () {
     if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
