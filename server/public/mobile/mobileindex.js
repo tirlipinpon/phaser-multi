@@ -5,8 +5,13 @@ var ready = true;
 window.onload = function () {
     var self = this;
     this.socket = io();
-    var gamma;
-    var alpha;
+    var gamma; // gauche g0-    droite g0+
+    var beta;  // haut b90-     bas b90+
+
+    var leftKeyPressed = false;
+    var rightKeyPressed = false;
+    var upKeyPressed = false;
+    var downKeyPressed = false;
 
     const noSleep = new NoSleep();
     noSleep.disable();
@@ -16,13 +21,33 @@ window.onload = function () {
         function handleOrientation(self, e) {
             if (ready) {
                 if (gamma !== e.gamma) {
+                    if (e.gamma > 10 && e.gamma < 80) {
+                        leftKeyPressed = true;
+                    } else if (e.gamma < -10 && e.gamma > -80) {
+                        rightKeyPressed = true;
+                    } else {
+                        leftKeyPressed = false;
+                        rightKeyPressed = false;
+                    }
                     gamma = e.gamma;
-                    self.socket.emit('orientationGamma', e.gamma);
                 }
-                if (alpha !== e.alpha) {
-                    alpha = e.alpha;
-                    self.socket.emit('orientationAlpha', e.alpha);
+                if (beta !== e.beta) {
+                    if (e.beta < -10 && e.beta > -80) {
+                        upKeyPressed = true;
+                    } else if (e.beta > 10 && e.beta < 80) {
+                        downKeyPressed = true;
+                    } else {
+                        upKeyPressed = false;
+                        downKeyPressed = false;
+                    }
+                    beta = e.beta;
                 }
+                self.socket.emit('playerInput', {
+                    left: leftKeyPressed,
+                    right: rightKeyPressed,
+                    up: upKeyPressed,
+                    down: downKeyPressed
+                });
             }
         }
 
