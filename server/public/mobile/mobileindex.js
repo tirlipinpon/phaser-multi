@@ -5,52 +5,15 @@ var ready = true;
 window.onload = function () {
     var self = this;
     this.socket = io();
-    var gamma; // gauche g0-    droite g0+
-    var beta;  // haut b90-     bas b90+
-    var playerLength;
-    var playerColor;
-
-    var leftKeyPressed = false;
-    var rightKeyPressed = false;
-    var upKeyPressed = false;
-    var downKeyPressed = false;
 
     const noSleep = new NoSleep();
     noSleep.disable();
     const button = document.getElementsByTagName('button')[0];
-    const logs = document.getElementsByTagName('div')[0];
+
 
     if (true || isMobile()) {
         function handleOrientation(self, e) {
             if (ready) {
-                if (gamma !== e.gamma) {
-                    if (e.gamma > 10 && e.gamma < 80) {
-                        leftKeyPressed = true;
-                    } else if (e.gamma < -10 && e.gamma > -80) {
-                        rightKeyPressed = true;
-                    } else {
-                        leftKeyPressed = false;
-                        rightKeyPressed = false;
-                    }
-                    gamma = e.gamma;
-                }
-                if (beta !== e.beta) {
-                    if (e.beta < -10 && e.beta > -80) {
-                        upKeyPressed = true;
-                    } else if (e.beta > 10 && e.beta < 80) {
-                        downKeyPressed = true;
-                    } else {
-                        upKeyPressed = false;
-                        downKeyPressed = false;
-                    }
-                    beta = e.beta;
-                }
-                self.socket.emit('playerInput', {
-                    left: leftKeyPressed,
-                    right: rightKeyPressed,
-                    up: upKeyPressed,
-                    down: downKeyPressed
-                });
             }
         }
 
@@ -59,41 +22,9 @@ window.onload = function () {
 
         function enableNoSleep(self) {
             button.removeEventListener('click', handleOrientation.bind(event, self), false);
-            if (!playerLength) {
-                self.socket.emit('mobile connected');
-                self.socket.on('start', function () {
-                    ready = true;
-                });
-                self.socket.on('player added', function (pl, pc, playerObject) {
-                    // TODO: change button if first player
-                    playerLength = pl;
-                    playerColor = pc;
-                    button.innerHTML = playerLength;
-                    console.log(playerObject);
-                    document.body.style.background = playerColor;
-                });
-                noSleep.enable();
-                button.addEventListener('click', startGame, false);
-                self.socket.on('party full', function (message) {
-                    button.innerHTML = message;
-                });
-                self.socket.on('disconnected', function (message) {
-                    window.location.reload(false);
-                });
-                self.socket.on('start game', function () {
-                    console.log('start game to mobile');
-                    document.body.style.background = 'grey';
-                });
-                // self.socket.on('player disconnected', function () {
-                //     document.body.style.background = 'white';
-                // });
-            }
         }
         function startGame() {
             button.removeEventListener('click', startGame, false);
-            if (playerLength) {
-                self.socket.emit('start game');
-            }
         }
     }
 };
