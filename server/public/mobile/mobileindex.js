@@ -5,26 +5,41 @@ var ready = true;
 window.onload = function () {
     var self = this;
     this.socket = io();
-
     const noSleep = new NoSleep();
     noSleep.disable();
-    const button = document.getElementsByTagName('button')[0];
-
+    const buttonJoin = document.getElementsByTagName('button')[0];
+    const buttonStart = document.getElementsByTagName('button')[1];
 
     if (true || isMobile()) {
+        buttonJoin.style.visibility = 'visible';
         function handleOrientation(self, e) {
             if (ready) {
+
+                self.socket.on('mobile set params', function (isFirstPlayer, playerColor) {
+                    console.log('set params -> isFirstPlayer: ' + isFirstPlayer + ' playerColor: ' + playerColor);
+                    document.body.style.background = playerColor;
+                    buttonJoin.style.visibility = 'hidden';
+                    if (isFirstPlayer) {
+                        buttonStart.style.visibility = 'visible';
+                        buttonStart.addEventListener('click', startGame.bind(null, self), false);
+
+                    }
+                });
+
             }
         }
 
         window.addEventListener("deviceorientation", handleOrientation.bind(event, self), true);
-        button.addEventListener('click', enableNoSleep.bind(null, self), false);
+        buttonJoin.addEventListener('click', enableNoSleep.bind(null, self), false);
+
+
+        function startGame(self) {
+            this.socket.emit('start game');
+        }
 
         function enableNoSleep(self) {
-            button.removeEventListener('click', handleOrientation.bind(event, self), false);
-        }
-        function startGame() {
-            button.removeEventListener('click', startGame, false);
+            this.socket.emit('mobile connected');
+            buttonJoin.removeEventListener('click', handleOrientation.bind(event, self), false);
         }
     }
 };

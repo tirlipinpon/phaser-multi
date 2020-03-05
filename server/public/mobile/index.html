@@ -8,10 +8,28 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nosleep/0.6.0/NoSleep.min.js"></script>
 <script src="/public/mobile/mobileindex.js"></script>
+<style>
+    main {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        background-color: black;
+    }
+    button {
+        margin: auto;
+        width: 150px;
+        height: 50px;
+        cursor: pointer;
+        text-align: center;
+        visibility: hidden;
+    }
+</style>
 
 <main>
-    <button>Start</button>
-    <div>logs</div>
+    <button>Join a game.</button>
+    <br>
+    <button>Start the game.</button>
 </main>
 
 </body>
