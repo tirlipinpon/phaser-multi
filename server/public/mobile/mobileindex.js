@@ -18,6 +18,7 @@ window.onload = function () {
     const noSleep = new NoSleep();
     noSleep.disable();
     const button = document.getElementsByTagName('button')[0];
+    const logs = document.getElementsByTagName('div')[0];
 
     if (true || isMobile()) {
         function handleOrientation(self, e) {
@@ -63,11 +64,12 @@ window.onload = function () {
                 self.socket.on('start', function () {
                     ready = true;
                 });
-                self.socket.on('player added', function (pl, pc) {
+                self.socket.on('player added', function (pl, pc, playerObject) {
                     // TODO: change button if first player
                     playerLength = pl;
                     playerColor = pc;
                     button.innerHTML = playerLength;
+                    console.log(playerObject);
                     document.body.style.background = playerColor;
                 });
                 noSleep.enable();
@@ -78,6 +80,13 @@ window.onload = function () {
                 self.socket.on('disconnected', function (message) {
                     window.location.reload(false);
                 });
+                self.socket.on('start game', function () {
+                    console.log('start game to mobile');
+                    document.body.style.background = 'grey';
+                });
+                // self.socket.on('player disconnected', function () {
+                //     document.body.style.background = 'white';
+                // });
             }
         }
         function startGame() {

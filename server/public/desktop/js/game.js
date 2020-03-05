@@ -40,6 +40,8 @@ function preload() {
     this.load.image('parallax_1', '/public/desktop/assets/parallax1.png');
     this.load.image('parallax_2', '/public/desktop/assets/parallax2.png');
     this.load.image('stars', '/public/desktop/assets/stars.png');
+
+    this.nbPlayerText = this.add.text(100,100, '0 player');
 }
 
 function create() {
@@ -47,6 +49,14 @@ function create() {
 
     self.playersGroup = this.add.group();
     socket.emit('desktop connected');
+
+    socket.on('number players', function (number, color) {
+        self.nbPlayerText.setText(number + ' player')
+    });
+    socket.on('start game', function () {
+        console.log('start game to desktop');
+    });
+
 }
 
 function update() {
