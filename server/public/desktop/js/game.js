@@ -1,5 +1,8 @@
+var numberPlayers;
+var game;
+
 window.onload = function () {
-    var config = {
+     var config = {
         width: window.innerWidth,
         height: window.innerHeight,
         backgroundColor: 0x000000,
@@ -23,19 +26,29 @@ window.onload = function () {
             height: window.innerHeight
         }
     };
-    var game = new Phaser.Game(config);
-    this.socket = io();
+     game = new Phaser.Game(config);
+     this.socket = io();
 };
 window.onbeforeunload = function (e) {
     this.socket.emit('desktop disconnected');
 };
 
 function preload() {
+    socket.emit('desktop connected');
 }
 
 function create() {
     var self = this;
+    numberPlayers = getText(self);
 }
 
 function update() {
+}
+
+function getText(self) {
+    var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+    var text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '0 player', style);
+    text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    return text;
 }

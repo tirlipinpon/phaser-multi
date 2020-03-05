@@ -23,15 +23,20 @@ const config = {
         height: window.innerHeight
     }
 };
-
+var currentDesktop;
 
 function preload() {
+    const self = this;
+    io.on('connection', function (socket) {
+        socket.on('desktop connected', function() {
+            currentDesktop = socket;
+            console.log('1 - desktop connected : ' + currentDesktop.id);
+        })
+    });
 }
 
 function create() {
-    const self = this;
-    io.on('connection', function (socket) {
-    });
+
 }
 
 function update() {

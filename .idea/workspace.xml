@@ -4,7 +4,6 @@
     <list default="true" id="b5cd5250-1765-4680-b5c7-24d984021407" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/authoritative_server/js/game.js" afterPath="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/desktop/js/game.js" afterPath="$PROJECT_DIR$/server/public/desktop/js/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/mobile/mobileindex.js" afterPath="$PROJECT_DIR$/server/public/mobile/mobileindex.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +17,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45628998">
+    <splitter split-orientation="horizontal" split-proportion="0.34434968">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="mobileindex.js" pinned="false" current-in-tab="true">
@@ -46,14 +45,14 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.5107843">
+        <splitter split-orientation="horizontal" split-proportion="0.56341463">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="294">
-                      <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+                    <state relative-caret-position="42">
+                      <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
                       <folding>
                         <element signature="e#15#559#0" expanded="false" />
                         <element signature="e#119#235#0" expanded="false" />
@@ -71,10 +70,10 @@
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="273">
-                      <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+                    <state relative-caret-position="272">
+                      <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
                       <folding>
-                        <element signature="e#47#656#0" expanded="false" />
+                        <element signature="e#78#687#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -149,9 +148,9 @@
         <option value="$PROJECT_DIR$/server/public/mobile/index.js" />
         <option value="$PROJECT_DIR$/server/public/desktop/index.html" />
         <option value="$PROJECT_DIR$/server/public/mobile/index.html" />
-        <option value="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
-        <option value="$PROJECT_DIR$/server/public/desktop/js/game.js" />
         <option value="$PROJECT_DIR$/server/public/mobile/mobileindex.js" />
+        <option value="$PROJECT_DIR$/server/public/desktop/js/game.js" />
+        <option value="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
       </list>
     </option>
   </component>
@@ -666,12 +665,12 @@
       <workItem from="1583236439040" duration="1931000" />
       <workItem from="1583322750294" duration="104000" />
       <workItem from="1583322990689" duration="14459000" />
-      <workItem from="1583413147991" duration="5173000" />
+      <workItem from="1583413147991" duration="6380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117223000" />
+    <option name="totallyTimeSpent" value="118430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="0" />
@@ -760,7 +759,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -784,7 +783,7 @@
         <state relative-caret-position="1722">
           <caret line="141" column="46" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="46" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -814,7 +813,7 @@
         <state relative-caret-position="1722">
           <caret line="141" column="46" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="46" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -844,7 +843,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -867,7 +866,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -890,7 +889,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -913,7 +912,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -957,7 +956,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#47#656#0" expanded="false" />
+            <element signature="e#78#687#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1087,35 +1086,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-          <folding>
-            <element signature="e#47#656#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding>
-            <element signature="e#15#559#0" expanded="false" />
-            <element signature="e#119#235#0" expanded="false" />
-            <element signature="e#248#328#0" expanded="false" />
-            <element signature="e#363#557#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+          <folding>
+            <element signature="e#78#687#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#15#559#0" expanded="false" />
+            <element signature="e#119#235#0" expanded="false" />
+            <element signature="e#248#328#0" expanded="false" />
+            <element signature="e#363#557#0" expanded="false" />
           </folding>
         </state>
       </provider>
