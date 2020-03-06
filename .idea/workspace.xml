@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5cd5250-1765-4680-b5c7-24d984021407" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/authoritative_server/js/game.js" afterPath="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/desktop/js/game.js" afterPath="$PROJECT_DIR$/server/public/desktop/js/game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/mobile/index.html" afterPath="$PROJECT_DIR$/server/public/mobile/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/mobile/mobileindex.js" afterPath="$PROJECT_DIR$/server/public/mobile/mobileindex.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +17,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.15511727">
+    <splitter split-orientation="horizontal" split-proportion="0.5794243">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="mobileindex.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="275">
-                  <caret line="21" column="40" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+                <state relative-caret-position="453">
+                  <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#40#0" expanded="false" />
                   </folding>
@@ -38,21 +35,24 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.5695946">
+        <splitter split-orientation="horizontal" split-proportion="0.7313541">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="87">
-                      <caret line="50" column="55" lean-forward="false" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
+                    <state relative-caret-position="351">
+                      <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
                       <folding>
                         <element signature="e#15#559#0" expanded="false" />
                         <element signature="e#119#235#0" expanded="false" />
                         <element signature="e#248#328#0" expanded="false" />
                         <element signature="e#363#557#0" expanded="false" />
                         <element signature="e#1023#1136#0" expanded="false" />
-                        <element signature="e#2790#2900#0" expanded="false" />
+                        <element signature="e#1975#2525#0" expanded="false" />
+                        <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+                        <element signature="e#2817#3078#0" expanded="false" />
+                        <element signature="e#2962#3072#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -115,9 +115,9 @@
       <find>body.style.background</find>
       <find>players</find>
       <find>innerHTML</find>
-      <find>mobile set params</find>
       <find>desktop new player</find>
       <find>currentPosition</find>
+      <find>mobile set params</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,8 +141,8 @@
         <option value="$PROJECT_DIR$/server/public/mobile/index.js" />
         <option value="$PROJECT_DIR$/server/public/desktop/index.html" />
         <option value="$PROJECT_DIR$/server/public/mobile/index.html" />
-        <option value="$PROJECT_DIR$/server/public/mobile/mobileindex.js" />
         <option value="$PROJECT_DIR$/server/public/desktop/js/game.js" />
+        <option value="$PROJECT_DIR$/server/public/mobile/mobileindex.js" />
         <option value="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
       </list>
     </option>
@@ -660,16 +660,16 @@
       <workItem from="1583322990689" duration="14459000" />
       <workItem from="1583413147991" duration="8080000" />
       <workItem from="1583429446107" duration="6038000" />
-      <workItem from="1583494136004" duration="10745000" />
+      <workItem from="1583494136004" duration="12051000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136913000" />
+    <option name="totallyTimeSpent" value="138219000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -682,7 +682,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16684046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16579771" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31074035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.086886995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -746,7 +746,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -770,7 +773,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -800,7 +806,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -830,7 +839,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,7 +865,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -876,7 +891,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -899,7 +917,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -929,7 +950,10 @@
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1081,36 +1105,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
+    <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="21" column="40" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#40#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="50" column="55" lean-forward="false" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
+        <state relative-caret-position="351">
+          <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
           <folding>
             <element signature="e#15#559#0" expanded="false" />
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
             <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#2790#2900#0" expanded="false" />
+            <element signature="e#1975#2525#0" expanded="false" />
+            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
+            <element signature="e#2817#3078#0" expanded="false" />
+            <element signature="e#2962#3072#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
+    <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="54" />
-          <folding />
+        <state relative-caret-position="453">
+          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#40#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

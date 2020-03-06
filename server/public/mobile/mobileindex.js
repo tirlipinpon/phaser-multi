@@ -24,7 +24,7 @@ window.onload = function () {
                     position.innerHTML = 'position = ' + p;
                     document.body.style.background = playerColor;
                     buttonJoin.style.visibility = 'hidden';
-                    if (this.isFirstPlayer) {
+                    if (isFirstPlayer) {
                         buttonStart.style.visibility = 'visible';
                         buttonStart.addEventListener('click', startGame.bind(null, self), false);
                     }

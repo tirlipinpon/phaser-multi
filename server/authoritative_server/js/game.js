@@ -54,6 +54,7 @@ function create() {
                     Object.keys(players).length === 1,
                     player.color,
                     player.position);
+                emitMobileSetParams(players[socket.id]);
                 currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
                 currentDesktop.emit('desktop new player', players[socket.id]);
             }
@@ -68,6 +69,9 @@ function create() {
                 setNewPosition();
                 currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
             }
+        });
+        socket.on('start game', function () {
+           console.log('E - start game : ' + socket.id);
         });
 
     });
@@ -126,12 +130,19 @@ function updateColorFromRemovedPlayer(color) {
     console.log()
 }
 
+function emitMobileSetParams(player) {
+    io.to(player.id).emit('mobile set params',
+        Object.keys(players).length === 1,
+        player.color,
+        player.position);
+}
+
 function setNewPosition() {
     var position = 1;
     for (var key in players) {
         players[key].position = position;
         console.log('server new position :' +  players[key].id + ' position: ' + players[key].position);
-        io.to(players[key].id).emit('mobile set params', true, players[key].color, players[key].position);
+        emitMobileSetParams(players[key]);
         position++;
     }
 }
