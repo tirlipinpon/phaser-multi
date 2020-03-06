@@ -44,12 +44,16 @@ function create() {
     var self = this;
     self.playersGroup = this.add.group();
     socket.on('desktop nbPlayers', function (nbPlayers) {
-        console.log('desktop nbPlayers : ' + nbPlayers);
+        // console.log('nbPlayers : ' + nbPlayers);
         self.numberPlayers.setText(nbPlayers + ' player')
     });
-    socket.on('desktop new Player', function (playerInfo) {
-        console.log('3 - new player : ', playerInfo);
+    socket.on('desktop new player', function (playerInfo) {
+        console.log('C - new player : ', playerInfo);
         addPlayerToPhaser(self, playerInfo);
+    });
+    socket.on('desktop remove player', function (playerId) {
+        console.log('E - remove Player : ', playerId);
+        removePlayerFromPhaser(self, playerId);
     });
 }
 
@@ -71,4 +75,12 @@ function addPlayerToPhaser(self, playerInfo) {
     player.position = playerInfo.position;
     player.projectilesGroup = self.add.group();
     self.playersGroup.add(player);
+}
+
+function removePlayerFromPhaser(self, playerId) {
+    self.playersGroup.getChildren().forEach(function (player) {
+        if (playerId === player.id) {
+            player.destroy();
+        }
+    });
 }

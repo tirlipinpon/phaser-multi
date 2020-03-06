@@ -25,8 +25,8 @@ const config = {
 };
 var currentDesktop;
 const players = {};
-const playerColor = ['red', 'green', 'blue', 'pink'];
-const playerUsedColor = [];
+var playerColor = ['red', 'green', 'blue', 'pink'];
+var playerUsedColor = [];
 var currentPosition = 1;
 
 function preload() {
@@ -40,18 +40,36 @@ function create() {
     io.on('connection', function (socket) {
         // desktop entries
         socket.on('desktop connected', function () {
+            console.log('A - desktop connected : ' + socket.id);
             currentDesktop = socket;
-            console.log('1 - desktop connected : ' + currentDesktop.id);
         });
         // mobile entries
         socket.on('mobile connected', function () {
-            console.log('2 - mobile connected : ' + socket.id);
-            players[socket.id] = getNewPlayers(socket);
-            addPlayerToPhaser(self, players[socket.id]);
-            socket.broadcast.emit('desktop nbPlayers', Object.keys(players).length);
-            socket.emit('mobile set params', Object.keys(players).length === 1, players[socket.id].color);
-            currentDesktop.emit('desktop new Player', players[socket.id]);
+            if (currentDesktop) {
+                console.log('B - mobile connected : ' + socket.id);
+                var player = setNewPlayersObject(socket);
+                console.log('C - new player : ', player);
+                addPlayerToPhaser(self, player);
+                socket.emit('mobile set params',
+                    Object.keys(players).length === 1,
+                    player.color,
+                    player.position);
+                currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
+                currentDesktop.emit('desktop new player', players[socket.id]);
+            }
         });
+        socket.on('mobile disconnected', function (isFirstPlayer) {
+            if (players[socket.id]) {
+                console.log('D - mobile disconnected : ' + socket.id + ' isFirstPlayer : ' + isFirstPlayer);
+                removePlayerFromPhaser(self, socket.id);
+                updateColorFromRemovedPlayer(players[socket.id].color);
+                currentDesktop.emit('desktop remove player', players[socket.id].id);
+                delete players[socket.id];
+                setNewPosition();
+                currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
+            }
+        });
+
     });
 }
 
@@ -62,13 +80,13 @@ function update() {
 const game = new Phaser.Game(config);
 window.gameLoaded();
 
-function getNewPlayers(socket) {
+function setNewPlayersObject(socket) {
     var player = {
         x: currentPosition * 100,
         y: 100,
         id: socket.id,
         color: playerColor[0],
-        position: currentPosition,
+        position: null,
         input: {
             left: false,
             right: false,
@@ -80,6 +98,8 @@ function getNewPlayers(socket) {
     currentPosition++;
     playerUsedColor.push(playerColor[0]);
     playerColor.shift();
+    players[socket.id] = player;
+    player.position =  Object.keys(players).length;
     return player;
 }
 
@@ -88,4 +108,30 @@ function addPlayerToPhaser(self, playerInfo) {
     player.playerId = playerInfo.playerId;
     player.projectilesGroup = self.add.group();
     self.playersGroup.add(player);
+}
+
+function removePlayerFromPhaser(self, playerId) {
+    self.playersGroup.getChildren().forEach(function (player) {
+        if (playerId === player.id) {
+            player.destroy();
+        }
+    });
+}
+
+function updateColorFromRemovedPlayer(color) {
+    // add color to be used for next incoming player
+    playerColor.push(color);
+    // add unused color from removed player
+    playerUsedColor = playerUsedColor.filter(function(value, index, arr) { return value !== color; });
+    console.log()
+}
+
+function setNewPosition() {
+    var position = 1;
+    for (var key in players) {
+        players[key].position = position;
+        console.log('server new position :' +  players[key].id + ' position: ' + players[key].position);
+        io.to(players[key].id).emit('mobile set params', true, players[key].color, players[key].position);
+        position++;
+    }
 }

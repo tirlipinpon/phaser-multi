@@ -2,6 +2,8 @@
  * Created by tirli on 28-02-20.
  */
 var ready = true;
+var isFirstPlayer;
+
 window.onload = function () {
     var self = this;
     this.socket = io();
@@ -9,20 +11,22 @@ window.onload = function () {
     noSleep.disable();
     const buttonJoin = document.getElementsByTagName('button')[0];
     const buttonStart = document.getElementsByTagName('button')[1];
+    const position = document.getElementsByTagName('span')[0];
+
 
     if (true || isMobile()) {
         buttonJoin.style.visibility = 'visible';
         function handleOrientation(self, e) {
             if (ready) {
-
-                self.socket.on('mobile set params', function (isFirstPlayer, playerColor) {
-                    console.log('set params -> isFirstPlayer: ' + isFirstPlayer + ' playerColor: ' + playerColor);
+                self.socket.on('mobile set params', function (fp, playerColor, p) {
+                    console.log('mobile set params -> ' + socket + ' isFirstPlayer: ' + fp + ' playerColor: ' + playerColor);
+                    isFirstPlayer = fp;
+                    position.innerHTML = 'position = ' + p;
                     document.body.style.background = playerColor;
                     buttonJoin.style.visibility = 'hidden';
-                    if (isFirstPlayer) {
+                    if (this.isFirstPlayer) {
                         buttonStart.style.visibility = 'visible';
                         buttonStart.addEventListener('click', startGame.bind(null, self), false);
-
                     }
                 });
 
@@ -45,7 +49,10 @@ window.onload = function () {
 };
 
 window.onbeforeunload = function (e) {
-    this.socket.emit('mobile disconnected');
+    // check if player exist in server
+    if (isFirstPlayer !== null && isFirstPlayer !== undefined) {
+        this.socket.emit('mobile disconnected', isFirstPlayer);
+    }
 };
 
 const isMobile = function () {
