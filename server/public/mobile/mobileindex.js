@@ -3,6 +3,8 @@
  */
 var ready = true;
 var isFirstPlayer;
+var gameLaunched = false;
+var canConnect = false;
 
 window.onload = function () {
     var self = this;
@@ -11,24 +13,43 @@ window.onload = function () {
     noSleep.disable();
     const buttonJoin = document.getElementsByTagName('button')[0];
     const buttonStart = document.getElementsByTagName('button')[1];
-    const position = document.getElementsByTagName('span')[0];
+    const logs = document.getElementsByTagName('span')[0];
+    const disconnected = document.getElementsByTagName('span')[1];
 
-
-    if (true || isMobile()) {
+    if (true|| isMobile()) {
         buttonJoin.style.visibility = 'visible';
+
+        this.socket.emit('mobile can connect');
+        self.socket.on('mobile get can connect', function(getCanConnect) {
+            canConnect = getCanConnect;
+        });
+        self.socket.on('mobile set params', function(fp, playerColor, p) {
+            console.log('mobile set params -> ' + socket + ' isFirstPlayer: ' + fp + ' playerColor: ' + playerColor);
+            isFirstPlayer = fp;
+            logs.style.visibility = 'visible';
+            logs.innerHTML = 'position = ' + p;
+            document.body.style.background = playerColor;
+            buttonJoin.style.visibility = 'hidden';
+            if (isFirstPlayer) {
+                buttonStart.style.visibility = 'visible';
+                buttonStart.addEventListener('click', startGame.bind(null, self), false);
+            }
+        });
+        self.socket.on('mobile game started', function() {
+            console.log('mobile game started');
+            logs.style.visibility = 'visible';
+        });
+        self.socket.on('mobile desktop disconnected', function() {
+            console.log('H - mobile desktop disconnected');
+            // show command
+            gameLaunched = false;
+            disconnected.style.visibility = 'visible';
+        });
+
+
         function handleOrientation(self, e) {
             if (ready) {
-                self.socket.on('mobile set params', function (fp, playerColor, p) {
-                    console.log('mobile set params -> ' + socket + ' isFirstPlayer: ' + fp + ' playerColor: ' + playerColor);
-                    isFirstPlayer = fp;
-                    position.innerHTML = 'position = ' + p;
-                    document.body.style.background = playerColor;
-                    buttonJoin.style.visibility = 'hidden';
-                    if (isFirstPlayer) {
-                        buttonStart.style.visibility = 'visible';
-                        buttonStart.addEventListener('click', startGame.bind(null, self), false);
-                    }
-                });
+
 
             }
         }
@@ -38,7 +59,11 @@ window.onload = function () {
 
 
         function startGame(self) {
-            this.socket.emit('start game');
+            if (!gameLaunched) {
+                gameLaunched = true;
+                this.socket.emit('mobile start game');
+                buttonStart.style.visibility = 'hidden';
+            }
         }
 
         function enableNoSleep(self) {

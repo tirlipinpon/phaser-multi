@@ -23,11 +23,13 @@ const config = {
         height: window.innerHeight
     }
 };
-var currentDesktop;
+var currentDesktop = null;
 const players = {};
 var playerColor = ['red', 'green', 'blue', 'pink'];
 var playerUsedColor = [];
 var currentPosition = 1;
+var gameStarted = false;
+var gameLaunched = false; // TODO: for bug eventlistener from mobile send many
 
 function preload() {
     const self = this;
@@ -36,12 +38,25 @@ function preload() {
 
 function create() {
     var self = this;
-    this.playersGroup = self.physics.add.group();
+    self.playersGroup = self.physics.add.group();
     io.on('connection', function (socket) {
         // desktop entries
         socket.on('desktop connected', function () {
             console.log('A - desktop connected : ' + socket.id);
             currentDesktop = socket;
+        });
+        socket.on('desktop disconnected', function () {
+            console.log('G - desktop disconnected');
+            socket.broadcast.emit('mobile desktop disconnected');
+            self.playersGroup.getChildren().forEach(function (player) {
+                delete players[player.id];
+                player.destroy();
+                initParameters();
+            });
+        });
+        socket.on('desktop game started', function () {
+            console.log('F - game started');
+            socket.broadcast.emit('mobile game started');
         });
         // mobile entries
         socket.on('mobile connected', function () {
@@ -70,10 +85,16 @@ function create() {
                 currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
             }
         });
-        socket.on('start game', function () {
-           console.log('E - start game : ' + socket.id);
+        socket.on('mobile start game', function () {
+            console.log('E - start game : ' + socket.id);
+            if (!gameLaunched) {
+                gameLaunched = true;
+                currentDesktop.emit('desktop start game', 3000);
+            }
         });
-
+        socket.on('mobile can connect', function () {
+            socket.emit('mobile get can connect', !gameLaunched && self.playersGroup.getChildren().length < 5)
+        });
     });
 }
 
@@ -83,6 +104,15 @@ function update() {
 
 const game = new Phaser.Game(config);
 window.gameLoaded();
+
+function initParameters() {
+    currentDesktop = null;
+    playerColor = ['red', 'green', 'blue', 'pink'];
+    playerUsedColor = [];
+    currentPosition = 1;
+    gameStarted = false;
+    gameLaunched = false;
+}
 
 function setNewPlayersObject(socket) {
     var player = {
@@ -103,7 +133,9 @@ function setNewPlayersObject(socket) {
     playerUsedColor.push(playerColor[0]);
     playerColor.shift();
     players[socket.id] = player;
-    player.position =  Object.keys(players).length;
+    player.position = Object.keys(players).length;
+    player.health = 100;
+    player.score = 0;
     return player;
 }
 
@@ -126,7 +158,9 @@ function updateColorFromRemovedPlayer(color) {
     // add color to be used for next incoming player
     playerColor.push(color);
     // add unused color from removed player
-    playerUsedColor = playerUsedColor.filter(function(value, index, arr) { return value !== color; });
+    playerUsedColor = playerUsedColor.filter(function (value, index, arr) {
+        return value !== color;
+    });
     console.log()
 }
 
@@ -141,7 +175,7 @@ function setNewPosition() {
     var position = 1;
     for (var key in players) {
         players[key].position = position;
-        console.log('server new position :' +  players[key].id + ' position: ' + players[key].position);
+        console.log('server new position :' + players[key].id + ' position: ' + players[key].position);
         emitMobileSetParams(players[key]);
         position++;
     }

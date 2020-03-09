@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5cd5250-1765-4680-b5c7-24d984021407" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/authoritative_server/js/game.js" afterPath="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/desktop/js/game.js" afterPath="$PROJECT_DIR$/server/public/desktop/js/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/mobile/index.html" afterPath="$PROJECT_DIR$/server/public/mobile/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/mobile/mobileindex.js" afterPath="$PROJECT_DIR$/server/public/mobile/mobileindex.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,17 +20,30 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5794243">
+    <splitter split-orientation="horizontal" split-proportion="0.19189766">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="mobileindex.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="453">
-                  <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="26" />
+                <state relative-caret-position="21">
+                  <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
                   <folding>
                     <element signature="e#0#40#0" expanded="false" />
+                    <element signature="e#851#1412#0" expanded="false" />
+                    <element signature="e#1472#1578#0" expanded="false" />
+                    <element signature="e#1646#1834#0" expanded="false" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/server/public/mobile/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="420">
+                  <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -35,24 +51,27 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.7313541">
+        <splitter split-orientation="horizontal" split-proportion="0.36741424">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="351">
-                      <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
+                    <state relative-caret-position="63">
+                      <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="48" />
                       <folding>
                         <element signature="e#15#559#0" expanded="false" />
                         <element signature="e#119#235#0" expanded="false" />
                         <element signature="e#248#328#0" expanded="false" />
                         <element signature="e#363#557#0" expanded="false" />
-                        <element signature="e#1023#1136#0" expanded="false" />
-                        <element signature="e#1975#2525#0" expanded="false" />
-                        <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-                        <element signature="e#2817#3078#0" expanded="false" />
-                        <element signature="e#2962#3072#0" expanded="false" />
+                        <element signature="e#1134#1247#0" expanded="false" />
+                        <element signature="e#1304#1633#0" expanded="false" />
+                        <element signature="e#1690#1804#0" expanded="false" />
+                        <element signature="e#2643#3193#0" expanded="false" />
+                        <element signature="e#3247#3465#0" expanded="false" />
+                        <element signature="e#3520#3642#0" expanded="false" />
+                        <element signature="e#4030#4291#0" expanded="false" />
+                        <element signature="e#4175#4285#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -65,9 +84,23 @@
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="330">
-                      <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="54" />
-                      <folding />
+                    <state relative-caret-position="336">
+                      <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+                      <folding>
+                        <element signature="e#135#829#0" expanded="false" />
+                        <element signature="e#155#764#0" expanded="false" />
+                        <element signature="e#868#917#0" expanded="false" />
+                        <element signature="n#!!block;n#preload#0" expanded="false" />
+                        <element signature="e#1257#1374#0" expanded="false" />
+                        <element signature="e#1435#1732#0" expanded="false" />
+                        <element signature="e#1794#1970#0" expanded="false" />
+                        <element signature="e#2027#2497#0" expanded="false" />
+                        <element signature="n#!!block;n#formatTime#0" expanded="false" />
+                        <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+                        <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+                        <element signature="n#!!block;n#removeScore#0" expanded="false" />
+                        <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -88,14 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Group.</find>
-      <find>playerSpacebar</find>
-      <find>this.star</find>
-      <find>starLocation</find>
-      <find>star</find>
-      <find>gl</find>
-      <find>io</find>
-      <find>broadcast</find>
       <find>mobileConnected</find>
       <find>emit</find>
       <find>getNewPlayers</find>
@@ -113,12 +138,23 @@
       <find>disconnected</find>
       <find>removePlayer</find>
       <find>body.style.background</find>
-      <find>players</find>
       <find>innerHTML</find>
       <find>desktop new player</find>
       <find>currentPosition</find>
       <find>mobile set params</find>
+      <find>broa</find>
+      <find>position</find>
+      <find>gameStarted</find>
+      <find>this.playersGroup</find>
+      <find>addPlayerToPhaser</find>
+      <find>onEvent</find>
+      <find>players</find>
+      <find>this.graphics</find>
+      <find>playersGroup</find>
     </findStrings>
+    <replaceStrings>
+      <replace>healthBar[id]</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -141,9 +177,9 @@
         <option value="$PROJECT_DIR$/server/public/mobile/index.js" />
         <option value="$PROJECT_DIR$/server/public/desktop/index.html" />
         <option value="$PROJECT_DIR$/server/public/mobile/index.html" />
-        <option value="$PROJECT_DIR$/server/public/desktop/js/game.js" />
         <option value="$PROJECT_DIR$/server/public/mobile/mobileindex.js" />
         <option value="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
+        <option value="$PROJECT_DIR$/server/public/desktop/js/game.js" />
       </list>
     </option>
   </component>
@@ -170,7 +206,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -183,153 +219,11 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authoritative_server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authoritative_server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phaser-3" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -660,15 +554,19 @@
       <workItem from="1583322990689" duration="14459000" />
       <workItem from="1583413147991" duration="8080000" />
       <workItem from="1583429446107" duration="6038000" />
-      <workItem from="1583494136004" duration="12051000" />
+      <workItem from="1583494136004" duration="12313000" />
+      <workItem from="1583613121253" duration="3333000" />
+      <workItem from="1583666197975" duration="4541000" />
+      <workItem from="1583755477993" duration="3926000" />
+      <workItem from="1583782899023" duration="4799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138219000" />
+    <option name="totallyTimeSpent" value="155080000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -679,26 +577,26 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16684046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31074035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10531804" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.086886995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14765458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -745,11 +643,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -758,7 +659,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -772,11 +687,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -785,7 +703,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1722">
           <caret line="141" column="46" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="46" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -805,11 +737,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -818,7 +753,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1722">
           <caret line="141" column="46" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="46" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -838,11 +787,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -851,7 +803,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -864,11 +830,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -877,7 +846,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -890,11 +873,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -903,7 +889,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -916,11 +916,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -929,7 +932,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -949,11 +966,14 @@
             <element signature="e#119#235#0" expanded="false" />
             <element signature="e#248#328#0" expanded="false" />
             <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -976,7 +996,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,14 +1093,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/desktop/js/beam.js" />
-    <entry file="file://$PROJECT_DIR$/server/authoritative_server/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/socket.io/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1097,46 +1123,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/authoritative_server/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/public/mobile/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        <state relative-caret-position="420">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="54" column="8" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="56" column="54" lean-forward="false" selection-start-line="56" selection-start-column="54" selection-end-line="56" selection-end-column="54" />
-          <folding>
-            <element signature="e#15#559#0" expanded="false" />
-            <element signature="e#119#235#0" expanded="false" />
-            <element signature="e#248#328#0" expanded="false" />
-            <element signature="e#363#557#0" expanded="false" />
-            <element signature="e#1023#1136#0" expanded="false" />
-            <element signature="e#1975#2525#0" expanded="false" />
-            <element signature="n#!!block;n#setNewPlayersObject#0" expanded="false" />
-            <element signature="e#2817#3078#0" expanded="false" />
-            <element signature="e#2962#3072#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="26" />
+        <state relative-caret-position="21">
+          <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
+            <element signature="e#851#1412#0" expanded="false" />
+            <element signature="e#1472#1578#0" expanded="false" />
+            <element signature="e#1646#1834#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="48" />
+          <folding>
+            <element signature="e#15#559#0" expanded="false" />
+            <element signature="e#119#235#0" expanded="false" />
+            <element signature="e#248#328#0" expanded="false" />
+            <element signature="e#363#557#0" expanded="false" />
+            <element signature="e#1134#1247#0" expanded="false" />
+            <element signature="e#1304#1633#0" expanded="false" />
+            <element signature="e#1690#1804#0" expanded="false" />
+            <element signature="e#2643#3193#0" expanded="false" />
+            <element signature="e#3247#3465#0" expanded="false" />
+            <element signature="e#3520#3642#0" expanded="false" />
+            <element signature="e#4030#4291#0" expanded="false" />
+            <element signature="e#4175#4285#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+          <folding>
+            <element signature="e#135#829#0" expanded="false" />
+            <element signature="e#155#764#0" expanded="false" />
+            <element signature="e#868#917#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
+            <element signature="e#1257#1374#0" expanded="false" />
+            <element signature="e#1435#1732#0" expanded="false" />
+            <element signature="e#1794#1970#0" expanded="false" />
+            <element signature="e#2027#2497#0" expanded="false" />
+            <element signature="n#!!block;n#formatTime#0" expanded="false" />
+            <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
+            <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
+            <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
