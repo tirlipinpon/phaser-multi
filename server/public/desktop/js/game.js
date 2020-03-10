@@ -4,6 +4,7 @@ var initialTime = 3;
 var timedEvent = null;
 const healthBars = {};
 const scores = {};
+var gameStarted = false;
 
 window.onload = function () {
      var config = {
@@ -60,16 +61,19 @@ function create() {
     });
     socket.on('desktop remove player', function (playerId) {
         console.log('E - remove Player : ', playerId);
-        removeHealthBar(playerId);
-        removeScore(playerId);
+        if (!gameStarted) {
+            removeHealthBar(playerId);
+            removeScore(playerId);
+        }
         removePlayerFromPhaser(self, playerId);
     });
     socket.on('desktop start game', function (timeMs) {
+        self.numberPlayers.destroy();
         if (timedEvent === null) {
             console.log('desktop start game : ', timeMs);
             var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-            text = self.add.text(32, 32, '.',  style);
-            text.setText('Countdown: ' + formatTime(initialTime));
+            text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '.',  style);
+            text.setText(formatTime(initialTime));
             timedEvent = self.time.addEvent({ delay: 1000, callback: onEventCountdown, callbackScope: this, loop: true });
         }
     });
@@ -157,9 +161,10 @@ function onEventCountdown() {
     if (initialTime < 0) {
         timedEvent.destroy();
         text.destroy();
+        gameStarted = true;
         socket.emit('desktop game started');
     } else {
-        text.setText('Countdown: ' + formatTime(initialTime));
+        text.setText(formatTime(initialTime));
         console.log(formatTime(initialTime));
     }
 }
@@ -191,7 +196,7 @@ function drawHealthBar(self, life, x, color, id, position) {
     var rect = new Phaser.Geom.Rectangle(x*(position/2), 50, life, 10);
     var graphics = self.add.graphics({ fillStyle: { color: color } });
     graphics.lineStyle(2, 0xffffff, 1);
-    graphics.strokeRect(x*(position/2), 50, life, 10);
+    graphics.strokeRect(x*(position/2), 50, life+2, 10);
     graphics.fillRectShape(rect);
     healthBars[id] = graphics;
 }

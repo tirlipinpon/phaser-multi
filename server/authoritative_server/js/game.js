@@ -116,8 +116,8 @@ function initParameters() {
 
 function setNewPlayersObject(socket) {
     var player = {
-        x: currentPosition * 100,
-        y: 100,
+        x: currentPosition * 100 * (currentPosition/2),
+        y: window.innerHeight-200,
         id: socket.id,
         color: playerColor[0],
         position: null,
