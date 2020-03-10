@@ -16,13 +16,13 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.19189766">
+    <splitter split-orientation="horizontal" split-proportion="0.36353946">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="mobileindex.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="21">
+                <state relative-caret-position="-270">
                   <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
                   <folding>
                     <element signature="e#0#40#0" expanded="false" />
@@ -47,13 +47,13 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.18139842">
+        <splitter split-orientation="horizontal" split-proportion="0.26549414">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="363">
+                    <state relative-caret-position="-501">
                       <caret line="119" column="31" lean-forward="false" selection-start-line="119" selection-start-column="31" selection-end-line="119" selection-end-column="31" />
                       <folding>
                         <element signature="e#15#559#0" expanded="false" />
@@ -79,13 +79,13 @@
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="135">
-                      <caret line="187" column="39" lean-forward="false" selection-start-line="187" selection-start-column="39" selection-end-line="187" selection-end-column="39" />
+                    <state relative-caret-position="478">
+                      <caret line="236" column="28" lean-forward="false" selection-start-line="236" selection-start-column="28" selection-end-line="236" selection-end-column="28" />
                       <folding>
                         <element signature="e#220#914#0" expanded="false" />
                         <element signature="e#240#849#0" expanded="false" />
                         <element signature="e#953#1002#0" expanded="false" />
-                        <element signature="n#!!block;n#update#0" expanded="false" />
+                        <element signature="n#!!block;n#preload#0" expanded="false" />
                         <element signature="n#!!block;n#formatTime#0" expanded="false" />
                         <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
                         <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -93,8 +93,10 @@
                         <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
                         <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
                         <element signature="n#!!block;n#removeScore#0" expanded="false" />
+                        <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
                         <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
                         <element signature="n#!!block;n#drawScores#0" expanded="false" />
+                        <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -135,7 +137,6 @@
       <find>mobile set params</find>
       <find>broa</find>
       <find>position</find>
-      <find>gameStarted</find>
       <find>this.playersGroup</find>
       <find>addPlayerToPhaser</find>
       <find>onEvent</find>
@@ -146,6 +147,7 @@
       <find>playersGroup</find>
       <find>onEventCountdown</find>
       <find>numberPlayers</find>
+      <find>gameStarted</find>
     </findStrings>
     <replaceStrings>
       <replace>healthBar[id]</replace>
@@ -201,7 +203,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -214,11 +216,135 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phaser-4" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="desktop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phaser-1" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -554,12 +680,12 @@
       <workItem from="1583666197975" duration="4541000" />
       <workItem from="1583755477993" duration="3926000" />
       <workItem from="1583782899023" duration="6142000" />
-      <workItem from="1583842430463" duration="3259000" />
+      <workItem from="1583842430463" duration="4745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159682000" />
+    <option name="totallyTimeSpent" value="161168000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="0" />
@@ -658,7 +784,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -666,8 +792,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -701,7 +829,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -709,8 +837,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -750,7 +880,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -758,8 +888,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -799,7 +931,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -807,8 +939,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -841,7 +975,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -849,8 +983,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -883,7 +1019,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -891,8 +1027,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -925,7 +1063,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -933,8 +1071,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -988,7 +1128,7 @@
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -996,8 +1136,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1129,7 +1271,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/mobile/mobileindex.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
+        <state relative-caret-position="-270">
           <caret line="23" column="39" lean-forward="false" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="39" />
           <folding>
             <element signature="e#0#40#0" expanded="false" />
@@ -1142,7 +1284,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/authoritative_server/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
+        <state relative-caret-position="-501">
           <caret line="119" column="31" lean-forward="false" selection-start-line="119" selection-start-column="31" selection-end-line="119" selection-end-column="31" />
           <folding>
             <element signature="e#15#559#0" expanded="false" />
@@ -1162,13 +1304,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="187" column="39" lean-forward="false" selection-start-line="187" selection-start-column="39" selection-end-line="187" selection-end-column="39" />
+        <state relative-caret-position="478">
+          <caret line="236" column="28" lean-forward="false" selection-start-line="236" selection-start-column="28" selection-end-line="236" selection-end-column="28" />
           <folding>
             <element signature="e#220#914#0" expanded="false" />
             <element signature="e#240#849#0" expanded="false" />
             <element signature="e#953#1002#0" expanded="false" />
-            <element signature="n#!!block;n#update#0" expanded="false" />
+            <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#getText#0" expanded="false" />
@@ -1176,8 +1318,10 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
             <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
+            <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
           </folding>
         </state>
       </provider>
