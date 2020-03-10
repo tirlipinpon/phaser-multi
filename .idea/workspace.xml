@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5cd5250-1765-4680-b5c7-24d984021407" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/authoritative_server/js/game.js" afterPath="$PROJECT_DIR$/server/authoritative_server/js/game.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/desktop/js/game.js" afterPath="$PROJECT_DIR$/server/public/desktop/js/game.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +47,7 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.42216358">
+        <splitter split-orientation="horizontal" split-proportion="0.18139842">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
@@ -81,15 +79,12 @@
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="570">
-                      <caret line="198" column="50" lean-forward="false" selection-start-line="198" selection-start-column="50" selection-end-line="198" selection-end-column="50" />
+                    <state relative-caret-position="135">
+                      <caret line="187" column="39" lean-forward="false" selection-start-line="187" selection-start-column="39" selection-end-line="187" selection-end-column="39" />
                       <folding>
-                        <element signature="e#160#854#0" expanded="false" />
-                        <element signature="e#180#789#0" expanded="false" />
-                        <element signature="e#893#942#0" expanded="false" />
-                        <element signature="n#!!block;n#preload#0" expanded="false" />
-                        <element signature="e#1282#1399#0" expanded="false" />
-                        <element signature="e#1460#1757#0" expanded="false" />
+                        <element signature="e#220#914#0" expanded="false" />
+                        <element signature="e#240#849#0" expanded="false" />
+                        <element signature="e#953#1002#0" expanded="false" />
                         <element signature="n#!!block;n#update#0" expanded="false" />
                         <element signature="n#!!block;n#formatTime#0" expanded="false" />
                         <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -98,6 +93,7 @@
                         <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
                         <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
                         <element signature="n#!!block;n#removeScore#0" expanded="false" />
+                        <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
                         <element signature="n#!!block;n#drawScores#0" expanded="false" />
                       </folding>
                     </state>
@@ -120,7 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>socket</find>
       <find>cursors</find>
       <find>handlePlayerInput</find>
       <find>id</find>
@@ -146,9 +141,10 @@
       <find>onEvent</find>
       <find>players</find>
       <find>this.graphics</find>
-      <find>playersGroup</find>
       <find>formatTime</find>
       <find>getText</find>
+      <find>playersGroup</find>
+      <find>onEventCountdown</find>
       <find>numberPlayers</find>
     </findStrings>
     <replaceStrings>
@@ -558,12 +554,12 @@
       <workItem from="1583666197975" duration="4541000" />
       <workItem from="1583755477993" duration="3926000" />
       <workItem from="1583782899023" duration="6142000" />
-      <workItem from="1583842430463" duration="384000" />
+      <workItem from="1583842430463" duration="3259000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156807000" />
+    <option name="totallyTimeSpent" value="159682000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="0" />
@@ -659,12 +655,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -673,6 +666,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -704,12 +698,9 @@
         <state relative-caret-position="1722">
           <caret line="141" column="46" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="46" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -718,6 +709,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -755,12 +747,9 @@
         <state relative-caret-position="1722">
           <caret line="141" column="46" lean-forward="false" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="46" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -769,6 +758,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -806,12 +796,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -820,6 +807,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -850,12 +838,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -864,6 +849,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -894,12 +880,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -908,6 +891,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -938,12 +922,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -952,6 +933,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -1003,12 +985,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -1017,6 +996,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>
@@ -1127,6 +1107,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1134,6 +1115,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1180,15 +1162,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="198" column="50" lean-forward="false" selection-start-line="198" selection-start-column="50" selection-end-line="198" selection-end-column="50" />
+        <state relative-caret-position="135">
+          <caret line="187" column="39" lean-forward="false" selection-start-line="187" selection-start-column="39" selection-end-line="187" selection-end-column="39" />
           <folding>
-            <element signature="e#160#854#0" expanded="false" />
-            <element signature="e#180#789#0" expanded="false" />
-            <element signature="e#893#942#0" expanded="false" />
-            <element signature="n#!!block;n#preload#0" expanded="false" />
-            <element signature="e#1282#1399#0" expanded="false" />
-            <element signature="e#1460#1757#0" expanded="false" />
+            <element signature="e#220#914#0" expanded="false" />
+            <element signature="e#240#849#0" expanded="false" />
+            <element signature="e#953#1002#0" expanded="false" />
             <element signature="n#!!block;n#update#0" expanded="false" />
             <element signature="n#!!block;n#formatTime#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
@@ -1197,6 +1176,7 @@
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
             <element signature="n#!!block;n#removeHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#removeScore#0" expanded="false" />
+            <element signature="n#!!block;n#drawHealthBar#0" expanded="false" />
             <element signature="n#!!block;n#drawScores#0" expanded="false" />
           </folding>
         </state>

@@ -5,6 +5,9 @@ var timedEvent = null;
 const healthBars = {};
 const scores = {};
 var gameStarted = false;
+var playersGroup = null;
+var self = null;
+var timeGame = 0;
 
 window.onload = function () {
      var config = {
@@ -47,8 +50,8 @@ function preload() {
 }
 
 function create() {
-    var self = this;
-    self.playersGroup = this.add.group();
+    self = this;
+    playersGroup = this.add.group();
     socket.on('desktop nbPlayers', function (nbPlayers) {
         // console.log('nbPlayers : ' + nbPlayers);
         self.numberPlayers.setText(nbPlayers + ' player')
@@ -57,7 +60,7 @@ function create() {
         console.log('C - new player : ', playerInfo);
         addPlayerToPhaser(self, playerInfo);
         drawHealthBar(self, playerInfo.health, playerInfo.x, playerInfo.color, playerInfo.id, playerInfo.position);
-        drawScores(self, playerInfo.x, playerInfo.id, playerInfo.position)
+        drawScores(self, playerInfo.x, playerInfo.id, playerInfo.position);
     });
     socket.on('desktop remove player', function (playerId) {
         console.log('E - remove Player : ', playerId);
@@ -72,8 +75,10 @@ function create() {
         if (timedEvent === null) {
             console.log('desktop start game : ', timeMs);
             var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-            text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '.',  style);
+            text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '',  style);
             text.setText(formatTime(initialTime));
+            text.setOrigin(.5);
+            text.setAlpha(.4);
             timedEvent = self.time.addEvent({ delay: 1000, callback: onEventCountdown, callbackScope: this, loop: true });
         }
     });
@@ -120,6 +125,8 @@ function getText(self) {
     var text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '0 player', style);
     text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
     text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    text.setOrigin(.5);
+    text.setAlpha(.4);
     return text;
 }
 
@@ -131,13 +138,15 @@ function addPlayerToPhaser(self, playerInfo) {
     player.health = playerInfo.health;
     player.score = playerInfo.score;
     player.projectilesGroup = self.add.group();
-    self.playersGroup.add(player);
+    playersGroup.add(player);
+    timeGame += 30;
 }
 
 function removePlayerFromPhaser(self, playerId) {
-    self.playersGroup.getChildren().forEach(function (player) {
+    playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.id) {
             player.destroy();
+            timeGame -= 30;
         }
     });
 }
@@ -162,10 +171,36 @@ function onEventCountdown() {
         timedEvent.destroy();
         text.destroy();
         gameStarted = true;
+        drawTimeEndCountdown();
         socket.emit('desktop game started');
     } else {
         text.setText(formatTime(initialTime));
         console.log(formatTime(initialTime));
+    }
+}
+
+function onEventCountdownGameEnd() {
+    timeGame -= 1;
+    if (initialTime < 0) {
+        timedEvent.destroy();
+        text.destroy();
+        gameStarted = false;
+        socket.emit('desktop game ended');
+    } else {
+        if (timeGame < 30 && timeGame > 20) {
+            text.displayWidth += 2;
+            text.displayHeight += 2;
+            text.setAlpha(.2);
+        } else if (timeGame < 20 && timeGame > 10) {
+            text.displayWidth += 10;
+            text.displayHeight += 10;
+            text.setAlpha(.3);
+        } else if (timeGame < 10) {
+            text.displayWidth += 20;
+            text.displayHeight += 20;
+            text.setAlpha(.4);
+        }
+        text.setText(formatTime(timeGame));
     }
 }
 
@@ -206,4 +241,13 @@ function drawScores(self, x, id, position) {
     var text = self.add.text(x*(position/2), 15, '0', style);
     scores[id] = text;
 
+}
+
+function drawTimeEndCountdown() {
+    var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+    text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '',  style);
+    text.setText(formatTime(timeGame));
+    text.setOrigin(.5);
+    text.setAlpha(.1);
+    timedEvent = self.time.addEvent({ delay: 1000, callback: onEventCountdownGameEnd, callbackScope: this, loop: true });
 }
