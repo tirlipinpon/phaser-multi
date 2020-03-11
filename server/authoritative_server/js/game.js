@@ -33,12 +33,10 @@ var gameLaunched = false; // TODO: for bug eventlistener from mobile send many
 
 function preload() {
     const self = this;
-    self.load.image('ship', 'assets/spaceShips_001.png');
 }
 
 function create() {
     var self = this;
-    self.playersGroup = self.physics.add.group();
     io.on('connection', function (socket) {
         // desktop entries
         socket.on('desktop connected', function () {
@@ -48,11 +46,7 @@ function create() {
         socket.on('desktop disconnected', function () {
             console.log('G - desktop disconnected');
             socket.broadcast.emit('mobile desktop disconnected');
-            self.playersGroup.getChildren().forEach(function (player) {
-                delete players[player.id];
-                player.destroy();
-                initParameters();
-            });
+            initParameters();
         });
         socket.on('desktop game started', function () {
             console.log('F - game started');
@@ -64,7 +58,6 @@ function create() {
                 console.log('B - mobile connected : ' + socket.id);
                 var player = setNewPlayersObject(socket, self);
                 console.log('C - new player : ', player);
-                addPlayerToPhaser(self, player);
                 socket.emit('mobile set params',
                     Object.keys(players).length === 1,
                     player.color,
@@ -77,7 +70,6 @@ function create() {
         socket.on('mobile disconnected', function (isFirstPlayer) {
             if (players[socket.id]) {
                 console.log('D - mobile disconnected : ' + socket.id + ' isFirstPlayer : ' + isFirstPlayer);
-                removePlayerFromPhaser(self, socket.id);
                 updateColorFromRemovedPlayer(players[socket.id].color);
                 if (currentDesktop) {
                     currentDesktop.emit('desktop remove player', players[socket.id].id);
@@ -98,7 +90,7 @@ function create() {
             }
         });
         socket.on('mobile can connect', function () {
-            socket.emit('mobile get can connect', !gameLaunched && self.playersGroup.getChildren().length < 5)
+            socket.emit('mobile get can connect', !gameLaunched && Object.keys(players).length < 5)
         });
         socket.on('mobile shoot', function () {
             currentDesktop.emit('desktop mobile shoot', players[socket.id])
@@ -152,21 +144,6 @@ function setNewPlayersObject(socket, self) {
     return player;
 }
 
-function addPlayerToPhaser(self, playerInfo) {
-    const player = self.physics.add.image(playerInfo.x, playerInfo.y, 'ship');
-    player.playerId = playerInfo.playerId;
-    player.projectilesGroup = self.add.group();
-    self.playersGroup.add(player);
-}
-
-function removePlayerFromPhaser(self, playerId) {
-    self.playersGroup.getChildren().forEach(function (player) {
-        if (playerId === player.id) {
-            player.destroy();
-        }
-    });
-}
-
 function updateColorFromRemovedPlayer(color) {
     // add color to be used for next incoming player
     playerColor.push(color);
@@ -174,7 +151,6 @@ function updateColorFromRemovedPlayer(color) {
     playerUsedColor = playerUsedColor.filter(function (value, index, arr) {
         return value !== color;
     });
-    console.log()
 }
 
 function emitMobileSetParams(player) {

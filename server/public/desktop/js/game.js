@@ -10,7 +10,7 @@ var self = null;
 var timeGame = 0;
 var globalSpeed = 0;
 var positionPlayerExtra = [0, 100, 300, 500, 700];
-
+var timerPowerUp;
 
 window.onload = function () {
     var config = {
@@ -57,22 +57,24 @@ function preload() {
     self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 16, frameHeight: 24});
     self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 16, frameHeight: 16 });
     self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
+    self.load.spritesheet('power-up', '/public/desktop/assets/spritesheets/power-up.png', { frameWidth: 16, frameHeight: 16 });
     self.numberPlayers = getText(self);
 }
-
 function create() {
     self = this;
-    this.background = setBackground(self);
-    this.parallax_1 = setParallax(0, 0, 50, 'parallax_1');
-    this.parallax_2 = setParallax(self.game.config.width - 50, 0, 50, 'parallax_2');
+    self.background = setBackground(self);
+    self.parallax_1 = setParallax(0, 0, 50, 'parallax_1');
+    self.parallax_2 = setParallax(self.game.config.width - 50, 0, 50, 'parallax_2');
     enemies = self.physics.add.group();
     playersGroup = self.add.group();
+    powerUps = self.physics.add.group();
     createAnims();
     duplicateEnnemies();
     socketOn();
     setOverlap();
-}
+    self.time.addEvent({delay: 7000, callback: createPowerUp, callbackScope: this, loop: true});
 
+}
 function socketOn() {
     socket.on('desktop nbPlayers', function (nbPlayers) {
         self.numberPlayers.setText(nbPlayers + ' player');
@@ -128,13 +130,13 @@ function socketOn() {
 
     });
 }
-
 function update() {
     var self = this;
     // if (text) {
     //     console.log(elapsed.getProgress().toString().substr(0, 4))
     //     text.setText('Event.progress: ' + elapsed.getProgress().toString().substr(0, 4));
     // }
+
     if (gameStarted) {
         this.background.tilePositionY -= 0.5;
         this.parallax_1.tilePositionY -= 1.5;
@@ -142,10 +144,32 @@ function update() {
         enemies.getChildren().forEach(function (ship) {
             moveShip(ship, globalSpeed + ship.speed);
         });
+        powerUps.getChildren().forEach(function (powerUp) {
+            // console.log(' limit:' + (self.game.config.height - 20) + ' actu: ' + powerUp.y);
+            if (powerUp.y > (self.game.config.height - 5)) {
+                powerUp.destroy();
+            }
+        });
     }
 }
+function createPowerUp() {
+    if (powerUps.getChildren().length < 1) {
+        var powerUp = self.physics.add.sprite(16, 16, 'power-up');
+        powerUps.add(powerUp);
+        powerUp.setRandomPosition(0, 0, self.game.config.width, 50);
 
-function  movePlayerManager(player, action) {
+        if (Math.random() > 0.5) {
+            powerUp.play('red_anim');
+        } else {
+            powerUp.play('gray_anim');
+        }
+        powerUp.setVelocity(100, 100);
+        powerUp.setCollideWorldBounds(true);
+        powerUp.setBounceX(1);
+        powerUp.setBounceY(1);
+    }
+}
+function movePlayerManager(player, action) {
     if (action === 'swipeleft') {
         player.setVelocityX(-200);
     } else if (action === 'swiperight') {
@@ -158,7 +182,6 @@ function  movePlayerManager(player, action) {
         player.setVelocityY(100);
     }
 }
-
 function setNewPositionPlayers(playerInfo) {
     if (playerInfo) {
         playersGroup.getChildren().forEach(function (player) {
@@ -173,11 +196,9 @@ function setNewPositionPlayers(playerInfo) {
         });
     }
 }
-
 function setOverlap() {
     self.physics.add.overlap(playersGroup, enemies, this.hurtPlayer, null, this);
 }
-
 function hurtPlayer(player, enemy) {
     console.log('hurtPlayer');
     this.resetShipPos(enemy);
@@ -206,7 +227,6 @@ function hurtPlayer(player, enemy) {
         removePlayerFromPhaser(self, player.id);
     }
 }
-
 function resetPlayer(player) {
     var x = positionPlayerExtra[player.position];
     var y = self.game.config.height + 164;
@@ -223,12 +243,10 @@ function resetPlayer(player) {
         callbackScope: this
     });
 }
-
 function resetShipPos(ship) {
     ship.y = 0;
     ship.x = getRandomX(50, this.game.config.width-50);
 }
-
 function createAnims() {
     self.anims.create({
         key: 'ship1_anim', // id for animation
@@ -270,8 +288,25 @@ function createAnims() {
         frameRate: 20, // speed of animation (frame/sec)
         repeat: -1 // infinity loop -1
     });
+    self.anims.create({
+        key: 'gray_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('power-up', {
+            start: 0,
+            end: 1
+        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+    self.anims.create({
+        key: 'red_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('power-up', {
+            start: 2,
+            end: 3
+        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
 }
-
 function duplicateEnnemies() {
     for (var i = 1; i < 4; i++) {
         var ship = self.add.sprite(getRandomX(0, self.game.config.width), 0, 'ship' + i);
@@ -280,25 +315,21 @@ function duplicateEnnemies() {
         enemies.add(ship);
     }
 }
-
 function getRandomX(min, max) {
     return Phaser.Math.Between(min, max);
 }
-
 function duplicateEnnemiesByTime() {
     var temp = timeGame % 20;
     if (temp === 0) {
         duplicateEnnemies()
     }
 }
-
 function moveShip(ship, speed) {
     ship.y += speed;
     if (ship.y > this.game.config.height) {
         resetShipPos(ship);
     }
 }
-
 function setParallax(x, y, size, name) {
     this.parallax = self.add.tileSprite(x, y, size, self.game.config.height, name);
     this.parallax.setOrigin(0, 0);
@@ -308,14 +339,12 @@ function setParallax(x, y, size, name) {
     // this.parallax_1.setScrollFactor(0);
     return this.parallax;
 }
-
 function setBackground(self) {
     var background = self.add.tileSprite(0, 0, self.game.config.width, self.game.config.height, 'background');
     background.setOrigin(0, 0);
     background.setDisplaySize(self.game.config.width, self.game.config.height);
     return background;
 }
-
 function formatTime(seconds) {
     // Minutes
     // var minutes = Math.floor(seconds/60);
@@ -326,7 +355,6 @@ function formatTime(seconds) {
     // Returns formated time
     return partInSeconds;
 }
-
 function setTimerStartGame(self) {
     // var timer = self.scene.time.addEvent({
     //     delay: 3000,                // ms
@@ -343,7 +371,6 @@ function setTimerStartGame(self) {
     this.elapsed = self.time.delayedCall(3000, onEvent, [], this);
     text = self.add.text('Event.progress: ' + this.elapsed.getProgress().toString().substr(0, 4));
 }
-
 function getText(self) {
     var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
     var text = self.add.text(window.innerWidth / 2 - 100, window.innerHeight / 2, '0 player', style);
@@ -353,7 +380,6 @@ function getText(self) {
     text.setAlpha(.4);
     return text;
 }
-
 function addPlayerToPhaser(self, playerInfo) {
     const player = self.physics.add.sprite(positionPlayerExtra[playerInfo.position], playerInfo.y, 'player');
     player.id = playerInfo.id;
@@ -366,8 +392,29 @@ function addPlayerToPhaser(self, playerInfo) {
     playersGroup.add(player);
     timeGame += 30;
     self.physics.add.overlap(player.projectilesGroup, enemies, hitEnemy, null, this);
+    self.physics.add.collider(player.projectilesGroup, powerUps, function (projectile, powerUp) {
+        projectile.destroy();
+    });
+    self.physics.add.overlap(player, powerUps, this.pickPowerUp, null, this);
 }
-
+function pickPowerUp(player, powerUp) {
+    // the twoo params set to true, make it inactive and hide it from the display list.
+    powerUp.disableBody(true, true);
+    if (timerPowerUp) {
+        timerPowerUp.remove();
+    }
+    if (powerUp.anims.currentAnim.key === 'gray_anim') {
+        player.powerUp = 'gray_anim';
+        timerPowerUp = self.time.delayedCall(5000, function () {
+            player.powerUp = null;
+        }, [], this);
+    } else if (powerUp.anims.currentAnim.key === 'red_anim') {
+        player.powerUp = 'red_anim';
+        timerPowerUp = self.time.delayedCall(5000, function () {
+            player.powerUp = null;
+        }, [], this);
+    }
+}
 function hitEnemy(projectile, enemy) {
     var explosion = new Explosion(self, enemy.x, enemy.y);
     projectile.destroy();
@@ -379,7 +426,6 @@ function hitEnemy(projectile, enemy) {
         }
     });
 }
-
 function removePlayerFromPhaser(self, playerId) {
     playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.id) {
@@ -393,21 +439,18 @@ function removePlayerFromPhaser(self, playerId) {
         gameStarted = false;
     }
 }
-
 function removeHealthBar(playerId) {
     if (healthBars[playerId]) {
         healthBars[playerId].clear();
         delete healthBars[playerId];
     }
 }
-
 function removeScore(playerId) {
     if (scores[playerId]) {
         scores[playerId].destroy();
         delete scores[playerId];
     }
 }
-
 function onEventCountdown() {
     initialTime -= 1; // One second
     if (initialTime < 0) {
@@ -415,6 +458,7 @@ function onEventCountdown() {
         text.destroy();
         gameStarted = true;
         drawTimeEndCountdown();
+        self.time.addEvent({delay: 10000, callback: createPowerUp, callbackScope: this, loop: true});
         socket.emit('desktop game started');
     } else {
         text.setText(formatTime(initialTime));
@@ -423,7 +467,6 @@ function onEventCountdown() {
         console.log(formatTime(initialTime));
     }
 }
-
 function onEventCountdownGameEnd() {
     if (!gameStarted) {
         timedEvent.destroy();
@@ -433,6 +476,9 @@ function onEventCountdownGameEnd() {
         timedEvent.destroy();
         text.destroy();
         gameStarted = false;
+        powerUps.getChildren().forEach(function(powerUp) {
+            powerUp.destroy();
+        })
         socket.emit('desktop game ended');
     } else {
         if (timeGame < 30 && timeGame > 20) {
@@ -452,7 +498,6 @@ function onEventCountdownGameEnd() {
         text.setText(formatTime(timeGame));
     }
 }
-
 function drawHealthBar(self, life, x, color, id, position) {
     if (healthBars[id]) {
         healthBars[id].clear();
@@ -484,14 +529,12 @@ function drawHealthBar(self, life, x, color, id, position) {
     graphics.fillRectShape(rect);
     healthBars[id] = graphics;
 }
-
 function drawScores(self, x, id, position) {
     var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
     var text = self.add.text(positionPlayerExtra[position], 15, this.zeroPad(0, 6), style);
     scores[id] = text;
 
 }
-
 function drawTimeEndCountdown() {
     var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
     text = self.add.text(window.innerWidth / 2 - 100, window.innerHeight / 2, '', style);
@@ -500,7 +543,6 @@ function drawTimeEndCountdown() {
     text.setAlpha(.1);
     timedEvent = self.time.addEvent({delay: 1000, callback: onEventCountdownGameEnd, callbackScope: this, loop: true});
 }
-
 function zeroPad(number, size) {
     var stringNumber = String(number);
     while (stringNumber.length < (size || 2)) {
