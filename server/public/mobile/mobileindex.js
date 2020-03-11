@@ -15,7 +15,7 @@ window.onload = function () {
     this.socket = io();
     const el = document.body;
     const noSleep = new NoSleep();
-    const touchSweep = new TouchSweep(el, {value: 1}, 10);
+    const touchSweep = new TouchSweep(el, {value: 1}, 60);
     noSleep.disable();
     const buttonJoin = document.getElementsByTagName('button')[0];
     const buttonStart = document.getElementsByTagName('button')[1];
@@ -72,12 +72,12 @@ window.onload = function () {
                 }, false);
                 el.addEventListener('swipeleft', function(event) {
                     // event.detail
-                    console.log('swipeleft', event);
+                    // console.log('swipeleft', event);
                     self.socket.emit('mobile action', 'swipeleft');
                 });
                 el.addEventListener('swiperight', function(event) {
                     // event.detail
-                    console.log('swiperight', event);
+                    // console.log('swiperight', event);
                     self.socket.emit('mobile action', 'swiperight');
                 });
                 el.addEventListener('swipedown', function(event) {
@@ -92,7 +92,7 @@ window.onload = function () {
                 });
                 el.addEventListener('tap', function(event) {
                     // event.detail
-                    console.log('tap', event);
+                    // console.log('tap', event);
                     self.socket.emit('mobile action', 'tap');
                 });
 

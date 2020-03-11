@@ -150,8 +150,6 @@ function  movePlayerManager(player, action) {
         player.setVelocityX(-200);
     } else if (action === 'swiperight') {
         player.setVelocityX(200);
-    } else {
-        player.setVelocityX(0);
     }
 
     if (action === 'swipeup') {
