@@ -5,13 +5,12 @@ var ready = true;
 var isFirstPlayer;
 var gameLaunched = false;
 var canConnect = false;
-var direction = null;
 var self = null;
 
 window.onload = function () {
     self = this;
     this.socket = io();
-    const el = document.body;
+    const el = document.getElementsByTagName('div')[0];
     const noSleep = new NoSleep();
     const touchSweep = new TouchSweep(el, {value: 1}, 60);
     noSleep.disable();
@@ -20,17 +19,6 @@ window.onload = function () {
     const buttonShoot = document.getElementsByTagName('button')[2];
     const logs = document.getElementsByTagName('span')[0];
     const disconnected = document.getElementsByTagName('span')[1];
-
-    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-    var vh = window.innerHeight * 0.01;
-    // Then we set the value in the --vh custom property to the root of the document
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    // We listen to the resize event
-    window.addEventListener('resize', function() {
-        // We execute the same script as before
-        var vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
 
 
     if (true || isMobile()) {
@@ -60,7 +48,10 @@ window.onload = function () {
         self.socket.on('mobile game started', function () {
             console.log('mobile game started');
             logs.style.visibility = 'visible';
-            handleSwipe()
+            handleSwipe();
+            // setInterval(function(){
+            //     this.socket.emit('mobile shoot');
+            // }, 500);
         });
         self.socket.on('mobile desktop disconnected', function () {
             console.log('H - mobile desktop disconnected');
@@ -105,8 +96,6 @@ window.onload = function () {
                     // console.log('tap', event);
                     self.socket.emit('mobile action', 'tap');
                 });
-
-
             }
         }
 
@@ -114,11 +103,12 @@ window.onload = function () {
         }
 
         window.addEventListener("deviceorientation", handleOrientation, true);
-        buttonJoin.addEventListener('click', enableNoSleep.bind(null, self), false);
+        buttonJoin.addEventListener('click', enableNoSleep, false);
 
 
-        function shoot(self) {
-            this.socket.emit('mobile shoot');
+        function shoot() {
+            self.socket.emit('mobile shoot');
+
         }
 
         function startGame(self) {
@@ -129,12 +119,12 @@ window.onload = function () {
             }
         }
 
-        function enableNoSleep(self) {
-            this.socket.emit('mobile connected');
+        function enableNoSleep() {
+            self.socket.emit('mobile connected');
             buttonJoin.removeEventListener('click', handleOrientation, false);
 
             buttonShoot.style.visibility = 'visible';
-            buttonShoot.addEventListener('click', shoot.bind(null, self), false);
+            buttonShoot.addEventListener('click', shoot, false);
 
         }
     }

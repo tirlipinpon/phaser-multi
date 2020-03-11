@@ -11,6 +11,7 @@ var timeGame = 0;
 var globalSpeed = 0;
 var positionPlayerExtra = [0, 100, 300, 500, 700];
 var timerPowerUp;
+var timeEventPowerUp = null;
 
 window.onload = function () {
     var config = {
@@ -57,6 +58,8 @@ function preload() {
     self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 16, frameHeight: 24});
     self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 16, frameHeight: 16 });
     self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
+    self.load.spritesheet('beam2', '/public/desktop/assets/spritesheets/beam2.png', {frameWidth: 16, frameHeight: 16});
+    self.load.spritesheet('beam3', '/public/desktop/assets/spritesheets/beam3.png', {frameWidth: 16, frameHeight: 16});
     self.load.spritesheet('power-up', '/public/desktop/assets/spritesheets/power-up.png', { frameWidth: 16, frameHeight: 16 });
     self.numberPlayers = getText(self);
 }
@@ -72,7 +75,7 @@ function create() {
     duplicateEnnemies();
     socketOn();
     setOverlap();
-    self.time.addEvent({delay: 7000, callback: createPowerUp, callbackScope: this, loop: true});
+    timeEventPowerUp = self.time.addEvent({delay: 7000, callback: createPowerUp, callbackScope: this, loop: true});
 
 }
 function socketOn() {
@@ -112,7 +115,13 @@ function socketOn() {
     socket.on('desktop mobile shoot', function (playerInfo) {
         playersGroup.getChildren().forEach(function (player) {
             if (playerInfo.id === player.id && player.active) {
-                new Beam(self, player);
+                if (player.powerUp === 'gray_anim') {
+                    new Beam(self, player, 'beam', 1.5);
+                } else if (player.powerUp === 'red_anim') {
+                    new Beam(self, player, 'beam2', 2);
+                } else {
+                    new Beam(self, player, 'beam3', 1);
+                }
             }
         });
     });
@@ -146,7 +155,7 @@ function update() {
         });
         powerUps.getChildren().forEach(function (powerUp) {
             // console.log(' limit:' + (self.game.config.height - 20) + ' actu: ' + powerUp.y);
-            if (powerUp.y > (self.game.config.height - 5)) {
+            if (powerUp.y > (self.game.config.height - 15)) {
                 powerUp.destroy();
             }
         });
@@ -282,6 +291,24 @@ function createAnims() {
     self.anims.create({
         key: 'beam_anim', // id for animation
         frames: self.anims.generateFrameNumbers('beam', {
+            start: 1,
+            end: 2
+        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+    self.anims.create({
+        key: 'beam_anim2', // id for animation
+        frames: self.anims.generateFrameNumbers('beam2', {
+            start: 1,
+            end: 2
+        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+    self.anims.create({
+        key: 'beam_anim3', // id for animation
+        frames: self.anims.generateFrameNumbers('beam3', {
             start: 1,
             end: 2
         }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
@@ -474,11 +501,15 @@ function onEventCountdownGameEnd() {
     timeGame -= 1;
     if (timeGame < 0) {
         timedEvent.destroy();
+        timeEventPowerUp.destroy();
         text.destroy();
         gameStarted = false;
         powerUps.getChildren().forEach(function(powerUp) {
             powerUp.destroy();
-        })
+        });
+        enemies.getChildren().forEach(function(ennemie) {
+            ennemie.destroy();
+        });
         socket.emit('desktop game ended');
     } else {
         if (timeGame < 30 && timeGame > 20) {

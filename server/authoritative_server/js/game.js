@@ -93,7 +93,9 @@ function create() {
             socket.emit('mobile get can connect', !gameLaunched && Object.keys(players).length < 5)
         });
         socket.on('mobile shoot', function () {
-            currentDesktop.emit('desktop mobile shoot', players[socket.id])
+
+                currentDesktop.emit('desktop mobile shoot', players[socket.id]);
+
         });
         socket.on('mobile action', function (action) {
             if (players[socket.id]) {
