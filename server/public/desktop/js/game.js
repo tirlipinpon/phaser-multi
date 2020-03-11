@@ -158,8 +158,6 @@ function  movePlayerManager(player, action) {
         player.setVelocityY(-100);
     } else if (action === 'swipedown') {
         player.setVelocityY(100);
-    } else if (action == 'touchend'){
-        player.setVelocityY(0);
     }
 }
 
