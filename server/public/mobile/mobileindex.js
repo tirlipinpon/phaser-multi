@@ -1,33 +1,45 @@
 /**
  * Created by tirli on 28-02-20.
  */
+// require('touchswipe');
+// import TouchSweep from '../../lib/touchsweep.js';
 var ready = true;
 var isFirstPlayer;
 var gameLaunched = false;
 var canConnect = false;
+var direction = null;
+var self = null;
 
 window.onload = function () {
-    var self = this;
+    self = this;
     this.socket = io();
+    const el = document.body;
     const noSleep = new NoSleep();
+    const touchSweep = new TouchSweep(el, {value: 1}, 10);
     noSleep.disable();
     const buttonJoin = document.getElementsByTagName('button')[0];
     const buttonStart = document.getElementsByTagName('button')[1];
+    const buttonShoot = document.getElementsByTagName('button')[2];
     const logs = document.getElementsByTagName('span')[0];
     const disconnected = document.getElementsByTagName('span')[1];
 
-    if (true|| isMobile()) {
+    if (true || isMobile()) {
         buttonJoin.style.visibility = 'visible';
 
         this.socket.emit('mobile can connect');
-        self.socket.on('mobile get can connect', function(getCanConnect) {
+        self.socket.on('mobile get can connect', function (getCanConnect) {
             canConnect = getCanConnect;
+            if (!canConnect) {
+                buttonJoin.style.visibility = 'hidden';
+                buttonShoot.style.visibility = 'hidden';
+                logs.innerHTML = 'party already started waiting for new room...';
+            }
         });
-        self.socket.on('mobile set params', function(fp, playerColor, p) {
+        self.socket.on('mobile set params', function (fp, playerColor, poz) {
             console.log('mobile set params -> ' + socket + ' isFirstPlayer: ' + fp + ' playerColor: ' + playerColor);
             isFirstPlayer = fp;
             logs.style.visibility = 'visible';
-            logs.innerHTML = 'position = ' + p;
+            logs.innerHTML = 'position = ' + poz;
             document.body.style.background = playerColor;
             buttonJoin.style.visibility = 'hidden';
             if (isFirstPlayer) {
@@ -35,11 +47,12 @@ window.onload = function () {
                 buttonStart.addEventListener('click', startGame.bind(null, self), false);
             }
         });
-        self.socket.on('mobile game started', function() {
+        self.socket.on('mobile game started', function () {
             console.log('mobile game started');
             logs.style.visibility = 'visible';
+            handleSwipe()
         });
-        self.socket.on('mobile desktop disconnected', function() {
+        self.socket.on('mobile desktop disconnected', function () {
             console.log('H - mobile desktop disconnected');
             // show command
             gameLaunched = false;
@@ -47,16 +60,56 @@ window.onload = function () {
         });
 
 
-        function handleOrientation(self, e) {
-            if (ready) {
+        function handleSwipe() {
+            if (ready && canConnect) {
+                el.addEventListener('touchstart', function(event){
+                    // console.log('touchstart', event);
+                }, false);
+                el.addEventListener('touchend', function(event){
+                    // console.log('touchend', event);
+                    // self.socket.emit('mobile action', 'touchend');
+                    event.preventDefault()
+                }, false);
+                el.addEventListener('swipeleft', function(event) {
+                    // event.detail
+                    console.log('swipeleft', event);
+                    self.socket.emit('mobile action', 'swipeleft');
+                });
+                el.addEventListener('swiperight', function(event) {
+                    // event.detail
+                    console.log('swiperight', event);
+                    self.socket.emit('mobile action', 'swiperight');
+                });
+                el.addEventListener('swipedown', function(event) {
+                    // event.detail
+                    console.log('swipedown', event);
+                    self.socket.emit('mobile action', 'swipedown');
+                });
+                el.addEventListener('swipeup', function(event) {
+                    // event.detail
+                    console.log('swipeup', event);
+                    self.socket.emit('mobile action', 'swipeup');
+                });
+                el.addEventListener('tap', function(event) {
+                    // event.detail
+                    console.log('tap', event);
+                    self.socket.emit('mobile action', 'tap');
+                });
 
 
             }
         }
 
-        window.addEventListener("deviceorientation", handleOrientation.bind(event, self), true);
+        function handleOrientation() {
+        }
+
+        window.addEventListener("deviceorientation", handleOrientation, true);
         buttonJoin.addEventListener('click', enableNoSleep.bind(null, self), false);
 
+
+        function shoot(self) {
+            this.socket.emit('mobile shoot');
+        }
 
         function startGame(self) {
             if (!gameLaunched) {
@@ -68,7 +121,11 @@ window.onload = function () {
 
         function enableNoSleep(self) {
             this.socket.emit('mobile connected');
-            buttonJoin.removeEventListener('click', handleOrientation.bind(event, self), false);
+            buttonJoin.removeEventListener('click', handleOrientation, false);
+
+            buttonShoot.style.visibility = 'visible';
+            buttonShoot.addEventListener('click', shoot.bind(null, self), false);
+
         }
     }
 };

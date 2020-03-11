@@ -5,10 +5,18 @@
     <title>controller</title>
 </head>
 <body>
+<script src="/public/mobile/js/touchsweep.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nosleep/0.6.0/NoSleep.min.js"></script>
 <script src="/public/mobile/mobileindex.js"></script>
 <style>
+    body {
+        color: #fff;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+
     main {
         display: flex;
         width: 100%;
@@ -28,9 +36,7 @@
         visibility: hidden;
     }
 
-    body {
-        color: #fff;
-    }
+
 </style>
 
 <main>
@@ -41,6 +47,11 @@
         <br>
     <button>Start the game.</button>
         <br>
+    <button>shoot</button>
+    <button>left</button>
+    <button>right</button>
+    <button>up</button>
+    <button>down</button>
 </main>
 
 </body>

@@ -62,7 +62,7 @@ function create() {
         socket.on('mobile connected', function () {
             if (currentDesktop) {
                 console.log('B - mobile connected : ' + socket.id);
-                var player = setNewPlayersObject(socket);
+                var player = setNewPlayersObject(socket, self);
                 console.log('C - new player : ', player);
                 addPlayerToPhaser(self, player);
                 socket.emit('mobile set params',
@@ -79,10 +79,15 @@ function create() {
                 console.log('D - mobile disconnected : ' + socket.id + ' isFirstPlayer : ' + isFirstPlayer);
                 removePlayerFromPhaser(self, socket.id);
                 updateColorFromRemovedPlayer(players[socket.id].color);
-                currentDesktop.emit('desktop remove player', players[socket.id].id);
+                if (currentDesktop) {
+                    currentDesktop.emit('desktop remove player', players[socket.id].id);
+                }
+
                 delete players[socket.id];
                 setNewPosition();
-                currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
+                if (currentDesktop) {
+                    currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
+                }
             }
         });
         socket.on('mobile start game', function () {
@@ -94,6 +99,14 @@ function create() {
         });
         socket.on('mobile can connect', function () {
             socket.emit('mobile get can connect', !gameLaunched && self.playersGroup.getChildren().length < 5)
+        });
+        socket.on('mobile shoot', function () {
+            currentDesktop.emit('desktop mobile shoot', players[socket.id])
+        });
+        socket.on('mobile action', function (action) {
+            if (players[socket.id]) {
+                currentDesktop.emit('desktop mobile action', players[socket.id], action);
+            }
         });
     });
 }
@@ -114,10 +127,10 @@ function initParameters() {
     gameLaunched = false;
 }
 
-function setNewPlayersObject(socket) {
+function setNewPlayersObject(socket, self) {
     var player = {
         x: currentPosition * 100 * (currentPosition/2),
-        y: window.innerHeight-200,
+        y: self.game.config.height + 164,
         id: socket.id,
         color: playerColor[0],
         position: null,
@@ -165,7 +178,8 @@ function updateColorFromRemovedPlayer(color) {
 }
 
 function emitMobileSetParams(player) {
-    io.to(player.id).emit('mobile set params',
+    io.to(player.id).emit(
+        'mobile set params',
         Object.keys(players).length === 1,
         player.color,
         player.position);
@@ -176,6 +190,7 @@ function setNewPosition() {
     for (var key in players) {
         players[key].position = position;
         console.log('server new position :' + players[key].id + ' position: ' + players[key].position);
+        currentDesktop.emit('desktop new position', players[key]);
         emitMobileSetParams(players[key]);
         position++;
     }

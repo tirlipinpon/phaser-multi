@@ -5,12 +5,15 @@ var timedEvent = null;
 const healthBars = {};
 const scores = {};
 var gameStarted = false;
-var playersGroup = null;
+// var playersGroup = null;
 var self = null;
 var timeGame = 0;
+var globalSpeed = 0;
+var positionPlayerExtra = [0, 100, 300, 500, 700];
+
 
 window.onload = function () {
-     var config = {
+    var config = {
         width: window.innerWidth,
         height: window.innerHeight,
         backgroundColor: 0x000000,
@@ -34,45 +37,54 @@ window.onload = function () {
             height: window.innerHeight
         }
     };
-     game = new Phaser.Game(config);
-     this.socket = io();
+    game = new Phaser.Game(config);
+    this.socket = io();
 };
 window.onbeforeunload = function (e) {
     this.socket.emit('desktop disconnected');
 };
 
 function preload() {
-    var self = this;
-    self.load.image('ship', '/public/desktop/assets/spaceShips_001.png');
-    this.load.image('background', '/public/desktop/assets/background.png');
-    this.load.image('parallax_1', '/public/desktop/assets/parallax1.png');
-    this.load.image('parallax_2', '/public/desktop/assets/parallax2.png');
-
     socket.emit('desktop connected');
+    var self = this;
+    // self.load.image('ship', '/public/desktop/assets/spaceShips_001.png');
+    self.load.image('background', '/public/desktop/assets/background.png');
+    self.load.image('parallax_1', '/public/desktop/assets/parallax1.png');
+    self.load.image('parallax_2', '/public/desktop/assets/parallax2.png');
+    self.load.spritesheet('ship', '/public/desktop/assets/spritesheets/ship.png', {frameWidth: 16, frameHeight: 16});
+    self.load.spritesheet('ship2', '/public/desktop/assets/spritesheets/ship2.png', {frameWidth: 32, frameHeight: 16});
+    self.load.spritesheet('ship3', '/public/desktop/assets/spritesheets/ship3.png', {frameWidth: 32, frameHeight: 32});
+    self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 16, frameHeight: 24});
+    self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 16, frameHeight: 16 });
+    self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
     self.numberPlayers = getText(self);
 }
 
 function create() {
     self = this;
-
     this.background = setBackground(self);
-    console.log(this.background.depth);
     this.parallax_1 = setParallax(0, 0, 50, 'parallax_1');
     this.parallax_2 = setParallax(self.game.config.width - 50, 0, 50, 'parallax_2');
+    enemies = self.physics.add.group();
+    playersGroup = self.add.group();
+    createAnims();
+    duplicateEnnemies();
+    socketOn();
+    setOverlap();
+}
 
-
-    playersGroup = this.add.group();
+function socketOn() {
     socket.on('desktop nbPlayers', function (nbPlayers) {
-        // console.log('nbPlayers : ' + nbPlayers);
         self.numberPlayers.setText(nbPlayers + ' player');
         self.numberPlayers.setDepth(1);
-        console.log(self.numberPlayers.depth);
     });
     socket.on('desktop new player', function (playerInfo) {
-        console.log('C - new player : ', playerInfo);
-        addPlayerToPhaser(self, playerInfo);
-        drawHealthBar(self, playerInfo.health, playerInfo.x, playerInfo.color, playerInfo.id, playerInfo.position);
-        drawScores(self, playerInfo.x, playerInfo.id, playerInfo.position);
+        if (!gameStarted) {
+            console.log('C - new player : ', playerInfo);
+            addPlayerToPhaser(self, playerInfo);
+            drawHealthBar(self, playerInfo.health, playerInfo.x, playerInfo.color, playerInfo.id, playerInfo.position);
+            drawScores(self, playerInfo.x, playerInfo.id, playerInfo.position);
+        }
     });
     socket.on('desktop remove player', function (playerId) {
         console.log('E - remove Player : ', playerId);
@@ -81,22 +93,41 @@ function create() {
             removeScore(playerId);
         }
         removePlayerFromPhaser(self, playerId);
+        setNewPositionPlayers();
     });
     socket.on('desktop start game', function (timeMs) {
         self.numberPlayers.destroy();
         if (timedEvent === null) {
             console.log('desktop start game : ', timeMs);
-            var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-            text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '',  style);
+            var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
+            text = self.add.text(window.innerWidth / 2 - 100, window.innerHeight / 2, '', style);
             text.setText(formatTime(initialTime));
             text.setOrigin(.5);
             text.setAlpha(.4);
-            timedEvent = self.time.addEvent({ delay: 1000, callback: onEventCountdown, callbackScope: this, loop: true });
+            timedEvent = self.time.addEvent({delay: 1000, callback: onEventCountdown, callbackScope: this, loop: true});
         }
     });
+    socket.on('desktop mobile shoot', function (playerInfo) {
+        playersGroup.getChildren().forEach(function (player) {
+            if (playerInfo.id === player.id && player.active) {
+                new Beam(self, player);
+            }
+        });
+    });
+    socket.on('desktop new position', function (playerInfo) {
+        setNewPositionPlayers(playerInfo);
+    });
+    socket.on('desktop mobile action', function (playerInfo, action) {
+        if (playerInfo) {
+            playersGroup.getChildren().forEach(function (player) {
+                if (playerInfo.id === player.id) {
+                    movePlayerManager(player, action);
+                }
+            });
+        }
+
+    });
 }
-
-
 
 function update() {
     var self = this;
@@ -108,6 +139,167 @@ function update() {
         this.background.tilePositionY -= 0.5;
         this.parallax_1.tilePositionY -= 1.5;
         this.parallax_2.tilePositionY -= 1.5;
+        enemies.getChildren().forEach(function (ship) {
+            moveShip(ship, globalSpeed + ship.speed);
+        });
+    }
+}
+
+function  movePlayerManager(player, action) {
+    if (action === 'swipeleft') {
+        player.setVelocityX(-200);
+    } else if (action === 'swiperight') {
+        player.setVelocityX(200);
+    } else {
+        player.setVelocityX(0);
+    }
+
+    if (action === 'swipeup') {
+        player.setVelocityY(-100);
+    } else if (action === 'swipedown') {
+        player.setVelocityY(100);
+    } else if (action == 'touchend'){
+        player.setVelocityY(0);
+    }
+}
+
+function setNewPositionPlayers(playerInfo) {
+    if (playerInfo) {
+        playersGroup.getChildren().forEach(function (player) {
+            if (playerInfo.id === player.id) {
+                player.x = positionPlayerExtra[playerInfo.position];
+                player.position = playerInfo.position;
+                removeHealthBar(player.id);
+                removeScore(player.id);
+                drawHealthBar(self, player.health, player.x, player.color, player.id, player.position);
+                drawScores(self, player.x, player.id, player.position);
+            }
+        });
+    }
+}
+
+function setOverlap() {
+    self.physics.add.overlap(playersGroup, enemies, this.hurtPlayer, null, this);
+}
+
+function hurtPlayer(player, enemy) {
+    console.log('hurtPlayer');
+    this.resetShipPos(enemy);
+    if (player.alpha < 1) {
+        return
+    }
+    new Explosion(self, player.x, player.y);
+    player.disableBody(true, true);
+    player.health -= enemy.speed * 10;
+    if (player.health < 0) {
+        player.health = 0;
+    }
+    drawHealthBar(self,
+        player.health,
+        healthBars[player.id].x,
+        player.color,
+        player.id,
+        player.position);
+    self.time.addEvent({
+        delay: 1000,
+        callback: this.resetPlayer(player),
+        callbackScope: this,
+        loop: false
+    });
+    if (player.health < 1) {
+        removePlayerFromPhaser(self, player.id);
+    }
+}
+
+function resetPlayer(player) {
+    var x = positionPlayerExtra[player.position];
+    var y = self.game.config.height + 164;
+    player.enableBody(true, x, y, true, true);
+    player.alpha = 0.5;
+    var tween = self.tweens.add({
+        targets: player,
+        y: self.game.config.height - 64,
+        ease: 'Power1',
+        repeat: 0,
+        onComplete: function () {
+            player.alpha = 1
+        },
+        callbackScope: this
+    });
+}
+
+function resetShipPos(ship) {
+    ship.y = 0;
+    ship.x = getRandomX(50, this.game.config.width-50);
+}
+
+function createAnims() {
+    self.anims.create({
+        key: 'ship1_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('ship'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+    self.anims.create({
+        key: 'ship2_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('ship2'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+    self.anims.create({
+        key: 'ship3_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('ship3'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+    self.anims.create({
+        key: 'player_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('player'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+    self.anims.create({
+        key: 'explode_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('explosion'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: 0, // infinity loop -1,
+        hideOnComplete: true
+    });
+    self.anims.create({
+        key: 'beam_anim', // id for animation
+        frames: self.anims.generateFrameNumbers('beam', {
+            start: 1,
+            end: 2
+        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frameRate: 20, // speed of animation (frame/sec)
+        repeat: -1 // infinity loop -1
+    });
+}
+
+function duplicateEnnemies() {
+    for (var i = 1; i < 4; i++) {
+        var ship = self.add.sprite(getRandomX(0, self.game.config.width), 0, 'ship' + i);
+        ship.speed = i;
+        ship.play('ship' + i + '_anim');
+        enemies.add(ship);
+    }
+}
+
+function getRandomX(min, max) {
+    return Phaser.Math.Between(min, max);
+}
+
+function duplicateEnnemiesByTime() {
+    var temp = timeGame % 20;
+    if (temp === 0) {
+        duplicateEnnemies()
+    }
+}
+
+function moveShip(ship, speed) {
+    ship.y += speed;
+    if (ship.y > this.game.config.height) {
+        resetShipPos(ship);
     }
 }
 
@@ -128,13 +320,13 @@ function setBackground(self) {
     return background;
 }
 
-function formatTime(seconds){
+function formatTime(seconds) {
     // Minutes
     // var minutes = Math.floor(seconds/60);
     // Seconds
-    var partInSeconds = seconds%60;
+    var partInSeconds = seconds;
     // Adds left zeros to seconds
-    partInSeconds = partInSeconds.toString().padStart(2,'0');
+    partInSeconds = partInSeconds.toString().padStart(2, '0');
     // Returns formated time
     return partInSeconds;
 }
@@ -157,8 +349,8 @@ function setTimerStartGame(self) {
 }
 
 function getText(self) {
-    var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-    var text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '0 player', style);
+    var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
+    var text = self.add.text(window.innerWidth / 2 - 100, window.innerHeight / 2, '0 player', style);
     text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
     text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
     text.setOrigin(.5);
@@ -167,24 +359,43 @@ function getText(self) {
 }
 
 function addPlayerToPhaser(self, playerInfo) {
-    const player = self.physics.add.image(playerInfo.x, playerInfo.y, 'ship');
+    const player = self.physics.add.sprite(positionPlayerExtra[playerInfo.position], playerInfo.y, 'player');
     player.id = playerInfo.id;
     player.color = playerInfo.color;
     player.position = playerInfo.position;
     player.health = playerInfo.health;
     player.score = playerInfo.score;
     player.projectilesGroup = self.add.group();
+    player.setCollideWorldBounds(true);
     playersGroup.add(player);
     timeGame += 30;
+    self.physics.add.overlap(player.projectilesGroup, enemies, hitEnemy, null, this);
+}
+
+function hitEnemy(projectile, enemy) {
+    var explosion = new Explosion(self, enemy.x, enemy.y);
+    projectile.destroy();
+    this.resetShipPos(enemy);
+    playersGroup.getChildren().forEach(function (player) {
+        if (projectile.id === player.id) {
+            player.score += enemy.speed * 10;
+            scores[player.id].setText(this.zeroPad(player.score, 6));
+        }
+    });
 }
 
 function removePlayerFromPhaser(self, playerId) {
     playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.id) {
             player.destroy();
-            timeGame -= 30;
+            if (!gameStarted) {
+                timeGame -= 30;
+            }
         }
     });
+    if (playersGroup.getChildren().length === 0) {
+        gameStarted = false;
+    }
 }
 
 function removeHealthBar(playerId) {
@@ -211,11 +422,16 @@ function onEventCountdown() {
         socket.emit('desktop game started');
     } else {
         text.setText(formatTime(initialTime));
+        text.displayWidth += 20;
+        text.displayHeight += 20;
         console.log(formatTime(initialTime));
     }
 }
 
 function onEventCountdownGameEnd() {
+    if (!gameStarted) {
+        timedEvent.destroy();
+    }
     timeGame -= 1;
     if (timeGame < 0) {
         timedEvent.destroy();
@@ -236,6 +452,7 @@ function onEventCountdownGameEnd() {
             text.displayHeight += 20;
             text.setAlpha(.3);
         }
+        duplicateEnnemiesByTime();
         text.setText(formatTime(timeGame));
     }
 }
@@ -263,27 +480,35 @@ function drawHealthBar(self, life, x, color, id, position) {
         color = 0xffffff;
     }
 
-     // ( [x] [, y] [, width] [, height])
-    var rect = new Phaser.Geom.Rectangle(x*(position/2), 50, life, 10);
-    var graphics = self.add.graphics({ fillStyle: { color: color } });
+    // ( [x] [, y] [, width] [, height])
+    var rect = new Phaser.Geom.Rectangle(positionPlayerExtra[position], 50, life, 10);
+    var graphics = self.add.graphics({fillStyle: {color: color}});
     graphics.lineStyle(2, 0xffffff, 1);
-    graphics.strokeRect(x*(position/2), 50, life+2, 10);
+    graphics.strokeRect(positionPlayerExtra[position], 50, 100 + 2, 10);
     graphics.fillRectShape(rect);
     healthBars[id] = graphics;
 }
 
 function drawScores(self, x, id, position) {
-    var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-    var text = self.add.text(x*(position/2), 15, '0', style);
+    var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
+    var text = self.add.text(positionPlayerExtra[position], 15, this.zeroPad(0, 6), style);
     scores[id] = text;
 
 }
 
 function drawTimeEndCountdown() {
-    var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-    text = self.add.text(window.innerWidth/2-100, window.innerHeight/2, '',  style);
+    var style = {font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle"};
+    text = self.add.text(window.innerWidth / 2 - 100, window.innerHeight / 2, '', style);
     text.setText(formatTime(timeGame));
     text.setOrigin(.5);
     text.setAlpha(.1);
-    timedEvent = self.time.addEvent({ delay: 1000, callback: onEventCountdownGameEnd, callbackScope: this, loop: true });
+    timedEvent = self.time.addEvent({delay: 1000, callback: onEventCountdownGameEnd, callbackScope: this, loop: true});
+}
+
+function zeroPad(number, size) {
+    var stringNumber = String(number);
+    while (stringNumber.length < (size || 2)) {
+        stringNumber = '0' + stringNumber;
+    }
+    return stringNumber;
 }
