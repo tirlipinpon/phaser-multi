@@ -23,7 +23,6 @@ window.onload = function () {
             create: create,
             update: update
         },
-        pixelArt: true,
         physics: {
             default: 'arcade',
             arcade: {
@@ -52,15 +51,15 @@ function preload() {
     self.load.image('background', '/public/desktop/assets/background.png');
     self.load.image('parallax_1', '/public/desktop/assets/parallax1.png');
     self.load.image('parallax_2', '/public/desktop/assets/parallax2.png');
-    self.load.spritesheet('ship', '/public/desktop/assets/spritesheets/ship.png', {frameWidth: 16, frameHeight: 16});
-    self.load.spritesheet('ship2', '/public/desktop/assets/spritesheets/ship2.png', {frameWidth: 32, frameHeight: 16});
-    self.load.spritesheet('ship3', '/public/desktop/assets/spritesheets/ship3.png', {frameWidth: 32, frameHeight: 32});
-    self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 16, frameHeight: 24});
-    self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 16, frameHeight: 16 });
+    self.load.spritesheet('ship', '/public/desktop/assets/spritesheets/ship.png', {frameWidth: 128, frameHeight: 128});
+    self.load.spritesheet('ship2', '/public/desktop/assets/spritesheets/ship2.png', {frameWidth: 128, frameHeight: 192});
+    self.load.spritesheet('ship3', '/public/desktop/assets/spritesheets/ship3.png', {frameWidth: 128, frameHeight: 256});
+    self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 128, frameHeight: 256});
+    self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 128, frameHeight: 128 });
     self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
     self.load.spritesheet('beam2', '/public/desktop/assets/spritesheets/beam2.png', {frameWidth: 16, frameHeight: 16});
     self.load.spritesheet('beam3', '/public/desktop/assets/spritesheets/beam3.png', {frameWidth: 16, frameHeight: 16});
-    self.load.spritesheet('power-up', '/public/desktop/assets/spritesheets/power-up.png', { frameWidth: 16, frameHeight: 16 });
+    self.load.spritesheet('power-up', '/public/desktop/assets/spritesheets/power-up.png', { frameWidth: 64, frameHeight: 64 });
     self.numberPlayers = getText(self);
 }
 function create() {
@@ -163,7 +162,7 @@ function update() {
 }
 function createPowerUp() {
     if (powerUps.getChildren().length < 1) {
-        var powerUp = self.physics.add.sprite(16, 16, 'power-up');
+        var powerUp = self.physics.add.sprite(64, 64, 'power-up');
         powerUps.add(powerUp);
         powerUp.setRandomPosition(0, 0, self.game.config.width, 50);
 
@@ -319,7 +318,7 @@ function createAnims() {
         key: 'gray_anim', // id for animation
         frames: self.anims.generateFrameNumbers('power-up', {
             start: 0,
-            end: 1
+            end: 3
         }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
         frameRate: 20, // speed of animation (frame/sec)
         repeat: -1 // infinity loop -1
@@ -327,8 +326,8 @@ function createAnims() {
     self.anims.create({
         key: 'red_anim', // id for animation
         frames: self.anims.generateFrameNumbers('power-up', {
-            start: 2,
-            end: 3
+            start: 4,
+            end: 7
         }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
         frameRate: 20, // speed of animation (frame/sec)
         repeat: -1 // infinity loop -1
