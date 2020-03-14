@@ -56,9 +56,9 @@ function preload() {
     self.load.spritesheet('ship3', '/public/desktop/assets/spritesheets/ship3.png', {frameWidth: 128, frameHeight: 256});
     self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 128, frameHeight: 256});
     self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 128, frameHeight: 128 });
-    self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/beam.png', {frameWidth: 16, frameHeight: 16});
-    self.load.spritesheet('beam2', '/public/desktop/assets/spritesheets/beam2.png', {frameWidth: 16, frameHeight: 16});
-    self.load.spritesheet('beam3', '/public/desktop/assets/spritesheets/beam3.png', {frameWidth: 16, frameHeight: 16});
+    self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/small-beam.png', {frameWidth: 16, frameHeight: 64});
+    self.load.spritesheet('beam2', '/public/desktop/assets/spritesheets/large-beam.png', {frameWidth: 32, frameHeight: 64});
+    self.load.spritesheet('beam3', '/public/desktop/assets/spritesheets/small-beam.png', {frameWidth: 16, frameHeight: 64});
     self.load.spritesheet('power-up', '/public/desktop/assets/spritesheets/power-up.png', { frameWidth: 64, frameHeight: 64 });
     self.numberPlayers = getText(self);
 }
@@ -115,9 +115,9 @@ function socketOn() {
         playersGroup.getChildren().forEach(function (player) {
             if (playerInfo.id === player.id && player.active) {
                 if (player.powerUp === 'gray_anim') {
-                    new Beam(self, player, 'beam', 1.5);
+                    new Beam(self, player, 'beam', 1);
                 } else if (player.powerUp === 'red_anim') {
-                    new Beam(self, player, 'beam2', 2);
+                    new Beam(self, player, 'beam2', 1);
                 } else {
                     new Beam(self, player, 'beam3', 1);
                 }
@@ -289,28 +289,19 @@ function createAnims() {
     });
     self.anims.create({
         key: 'beam_anim', // id for animation
-        frames: self.anims.generateFrameNumbers('beam', {
-            start: 1,
-            end: 2
-        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frames: self.anims.generateFrameNumbers('beam'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
         frameRate: 20, // speed of animation (frame/sec)
         repeat: -1 // infinity loop -1
     });
     self.anims.create({
         key: 'beam_anim2', // id for animation
-        frames: self.anims.generateFrameNumbers('beam2', {
-            start: 1,
-            end: 2
-        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frames: self.anims.generateFrameNumbers('beam2'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
         frameRate: 20, // speed of animation (frame/sec)
         repeat: -1 // infinity loop -1
     });
     self.anims.create({
         key: 'beam_anim3', // id for animation
-        frames: self.anims.generateFrameNumbers('beam3', {
-            start: 1,
-            end: 2
-        }), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
+        frames: self.anims.generateFrameNumbers('beam3'), // an array of frames : generateFrameNumbers -> using frames from ship spritesheet
         frameRate: 20, // speed of animation (frame/sec)
         repeat: -1 // infinity loop -1
     });
