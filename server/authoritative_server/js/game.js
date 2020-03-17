@@ -93,9 +93,7 @@ function create() {
             socket.emit('mobile get can connect', !gameLaunched && Object.keys(players).length < 5)
         });
         socket.on('mobile shoot', function () {
-
                 currentDesktop.emit('desktop mobile shoot', players[socket.id]);
-
         });
         socket.on('mobile action', function (action) {
             if (players[socket.id]) {
@@ -114,11 +112,13 @@ window.gameLoaded();
 
 function initParameters() {
     currentDesktop = null;
+    players = {};
     playerColor = ['red', 'green', 'blue', 'pink'];
     playerUsedColor = [];
     currentPosition = 1;
     gameStarted = false;
     gameLaunched = false;
+
 }
 
 function setNewPlayersObject(socket, self) {

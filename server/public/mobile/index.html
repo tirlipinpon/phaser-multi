@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta charset="UTF-8">
     <title>controller</title>
 </head>
@@ -50,18 +51,7 @@
 
 
 </style>
-<script>
-    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-    var vh = window.innerHeight * 0.01;
-    // Then we set the value in the --vh custom property to the root of the document
-    document.documentElement.style.setProperty('--vh', vh + 'px', 'important');
-    // We listen to the resize event
-    window.addEventListener('resize', function () {
-        // We execute the same script as before
-        var vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', vh + 'px', 'important');
-    });
-</script>
+
 <main>
     <span>logs</span>
     <span>Game disconnected.</span>
@@ -76,6 +66,17 @@
     </section>
 
 </main>
-
+<script>
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+    var vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', vh + 'px', 'important');
+    // We listen to the resize event
+    window.addEventListener('resize', function () {
+        // We execute the same script as before
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px', 'important');
+    });
+</script>
 </body>
 </html>
