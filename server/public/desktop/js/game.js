@@ -560,7 +560,7 @@ function resetShipPos(ship) {
 }
 function duplicateEnnemies() {
     for (var i = 1; i < 4; i++) {
-        var ship = self.add.sprite(getRandomX(0, self.game.config.width), 0, 'ship' + i);
+        var ship = self.add.sprite(getRandomX(0, self.game.config.width), -50, 'ship' + i);
         ship.speed = i;
         ship.play('ship' + i + '_anim');
         enemies.add(ship);
