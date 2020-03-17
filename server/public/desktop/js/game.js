@@ -15,8 +15,9 @@ var timeEventPowerUp = null;
 
 window.onload = function () {
     var config = {
-        width: window.innerWidth,
-        height: window.innerHeight,
+        type: Phaser.AUTO,
+        width: 1920,
+        height: 1080,
         backgroundColor: 0x000000,
         scene: {
             preload: preload,
@@ -26,13 +27,14 @@ window.onload = function () {
         physics: {
             default: 'arcade',
             arcade: {
+                gravity: { y: 0 },
                 debug: false
             }
         },
         scale: {
             parent: 'phaser-example',
-            // mode: Phaser.Scale.Fit,
-            // autoCenter: Phaser.Scale.CENTER_BOTH,
+            mode: Phaser.DOM.FIT,
+            //autoCenter: Phaser.Scale.CENTER_BOTH,
             width: window.innerWidth,
             height: window.innerHeight
         }
@@ -48,6 +50,7 @@ function preload() {
     socket.emit('desktop connected');
     var self = this;
     // self.load.image('ship', '/public/desktop/assets/spaceShips_001.png');
+    self.load.svg('gradient', '/public/desktop/assets/gradient1.svg');
     self.load.image('background', '/public/desktop/assets/background.png');
     self.load.image('parallax_1', '/public/desktop/assets/parallax1.png');
     self.load.image('parallax_2', '/public/desktop/assets/parallax2.png');
@@ -62,8 +65,10 @@ function preload() {
     self.load.spritesheet('power-up', '/public/desktop/assets/spritesheets/power-up.png', { frameWidth: 64, frameHeight: 64 });
     self.numberPlayers = getText(self);
 }
+
 function create() {
     self = this;
+    self.add.image(self.game.config.width/2, self.game.config.height/2, 'gradient').setDisplaySize(self.game.config.width, self.game.config.height);
     self.background = setBackground(self);
     self.parallax_1 = setParallax(0, 0, 50, 'parallax_1');
     self.parallax_2 = setParallax(self.game.config.width - 50, 0, 50, 'parallax_2');
@@ -75,7 +80,7 @@ function create() {
     socketOn();
     setOverlap();
     timeEventPowerUp = self.time.addEvent({delay: 7000, callback: createPowerUp, callbackScope: this, loop: true});
-
+    
 }
 function socketOn() {
     socket.on('desktop nbPlayers', function (nbPlayers) {
@@ -360,6 +365,8 @@ function setBackground(self) {
     var background = self.add.tileSprite(0, 0, self.game.config.width, self.game.config.height, 'background');
     background.setOrigin(0, 0);
     background.setDisplaySize(self.game.config.width, self.game.config.height);
+    background.setBlendMode(Phaser.BlendModes.SCREEN);
+    background.setAlpha(0.2);
     return background;
 }
 function formatTime(seconds) {

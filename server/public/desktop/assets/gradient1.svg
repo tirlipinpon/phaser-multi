@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">
+    <defs>
+        <radialGradient id="gradient">
+            <stop offset="0%" style="stop-color:#1B1464;"/>
+            <stop offset="100%" style="stop-color:#000;"/>
+        </radialGradient>
+    </defs>
+    <g fill="url(#gradient)">
+        <path class="background" d="M 0 0 H 320 V 180 H 0 L 0 0"/>
+    </g>
+</svg>
