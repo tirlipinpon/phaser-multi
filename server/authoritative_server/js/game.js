@@ -5,7 +5,7 @@ const config = {
     physics: {
         default: 'arcade',
         arcade: {
-            debug: false,
+            debug: true,
             gravity: {y: 0}
         }
     },
@@ -24,7 +24,7 @@ const config = {
     }
 };
 var currentDesktop = null;
-const players = {};
+var players = {};
 var playerColor = ['red', 'green', 'blue', 'pink'];
 var playerUsedColor = [];
 var currentPosition = 1;
@@ -54,7 +54,7 @@ function create() {
         });
         // mobile entries
         socket.on('mobile connected', function () {
-            if (currentDesktop) {
+            if (currentDesktop && Object.keys(players).length < 5) {
                 console.log('B - mobile connected : ' + socket.id);
                 var player = setNewPlayersObject(socket, self);
                 console.log('C - new player : ', player);
@@ -65,6 +65,8 @@ function create() {
                 emitMobileSetParams(players[socket.id]);
                 currentDesktop.emit('desktop nbPlayers', Object.keys(players).length);
                 currentDesktop.emit('desktop new player', players[socket.id]);
+            } else {
+                socket.emit('mobile desktop disconnected');
             }
         });
         socket.on('mobile disconnected', function (isFirstPlayer) {

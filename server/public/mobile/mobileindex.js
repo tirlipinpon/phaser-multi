@@ -6,6 +6,7 @@ var isFirstPlayer;
 var gameLaunched = false;
 var canConnect = false;
 var self = null;
+var controlSelected = 1;
 
 window.onload = function () {
     self = this;
@@ -18,8 +19,43 @@ window.onload = function () {
     const buttonStart = document.getElementsByTagName('button')[1];
     const buttonShoot = document.getElementsByTagName('button')[2];
     const logs = document.getElementsByTagName('span')[0];
+    const logsBeta = document.getElementsByTagName('span')[0];
+    const logsAlpha = document.getElementsByTagName('span')[0];
     const disconnected = document.getElementsByTagName('span')[1];
 
+    // window.addEventListener("deviceorientation", handleOrientation, false);
+
+    if(window.DeviceOrientationEvent) {
+
+    } else {
+        $('#logsAlpha').text('deviceorientation not working');
+    }
+
+    $('#controls').on('change',function(){
+        controlSelected = this.value;
+
+    });
+
+    function handleOrientation(e) {
+        if (isMobile()) {}
+
+
+
+            $('#logsAlpha').text(e.alpha);
+        $('#logsBeta').text(e.beta);
+        if (e.beta < 40  && e.beta > 0) {
+            self.socket.emit('mobile action', 'up');
+        } else if (e.beta > 60  && e.beta < 130) {
+            self.socket.emit('mobile action', 'down');
+        }
+
+        if (e.alpha > -10  && e.alpha < -90) {
+            self.socket.emit('mobile action', 'left');
+        } else if (e.alpha > 10  && e.alpha > 90) {
+            self.socket.emit('mobile action', 'right');
+        }
+
+    }
 
     if (true || isMobile()) {
         buttonJoin.style.visibility = 'visible';
@@ -48,6 +84,7 @@ window.onload = function () {
         self.socket.on('mobile game started', function () {
             console.log('mobile game started');
             logs.style.visibility = 'visible';
+
             handleSwipe();
             // setInterval(function(){
             //     this.socket.emit('mobile shoot');
@@ -60,6 +97,7 @@ window.onload = function () {
             disconnected.style.visibility = 'visible';
         });
 
+        buttonJoin.addEventListener('click', joinGame, false);
 
         function handleSwipe() {
             if (ready && canConnect) {
@@ -74,42 +112,32 @@ window.onload = function () {
                 el.addEventListener('swipeleft', function(event) {
                     // event.detail
                     // console.log('swipeleft', event);
-                    self.socket.emit('mobile action', 'swipeleft');
+                    self.socket.emit('mobile action', 'left');
                 });
                 el.addEventListener('swiperight', function(event) {
                     // event.detail
                     // console.log('swiperight', event);
-                    self.socket.emit('mobile action', 'swiperight');
+                    self.socket.emit('mobile action', 'right');
                 });
                 el.addEventListener('swipedown', function(event) {
                     // event.detail
                     console.log('swipedown', event);
-                    self.socket.emit('mobile action', 'swipedown');
+                    self.socket.emit('mobile action', 'down');
                 });
                 el.addEventListener('swipeup', function(event) {
                     // event.detail
                     console.log('swipeup', event);
-                    self.socket.emit('mobile action', 'swipeup');
+                    self.socket.emit('mobile action', 'up');
                 });
                 el.addEventListener('tap', function(event) {
                     // event.detail
-                    // console.log('tap', event);
+                    console.log('tap', event);
                     self.socket.emit('mobile action', 'tap');
+                    self.socket.emit('mobile shoot');
                 });
             }
         }
 
-        function handleOrientation() {
-        }
-
-        window.addEventListener("deviceorientation", handleOrientation, true);
-        buttonJoin.addEventListener('click', enableNoSleep, false);
-
-
-        function shoot() {
-            self.socket.emit('mobile shoot');
-
-        }
 
         function startGame(self) {
             if (!gameLaunched) {
@@ -119,13 +147,8 @@ window.onload = function () {
             }
         }
 
-        function enableNoSleep() {
+        function joinGame() {
             self.socket.emit('mobile connected');
-            buttonJoin.removeEventListener('click', handleOrientation, false);
-
-            buttonShoot.style.visibility = 'visible';
-            buttonShoot.addEventListener('click', shoot, false);
-
         }
     }
 };

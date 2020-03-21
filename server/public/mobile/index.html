@@ -9,6 +9,10 @@
 <script src="/public/mobile/js/touchsweep.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nosleep/0.6.0/NoSleep.min.js"></script>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+        crossorigin="anonymous"></script>
 <script src="/public/mobile/mobileindex.js"></script>
 <style>
     body {
@@ -53,7 +57,21 @@
 </style>
 
 <main>
+
+    <label for="controls">Choose a control type:</label>
+    <select id="controls">
+        <option value="1" selected>orientation</option>
+        <option value="2">swipe</option>
+        <option value="3">keyboard</option>
+    </select>
+
+
     <span>logs</span>
+    <section>
+        <a id="logsBeta">logsBeta</a>
+        <a id="logsAlpha">logsAlpha</a>
+    </section>
+
     <span>Game disconnected.</span>
         <br>
     <button>Join a game.</button>
@@ -61,10 +79,8 @@
     <button>Start the game.</button>
         <br>
     <section>
-        <button>shoot</button>
         <div></div>
     </section>
-
 </main>
 <script>
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
