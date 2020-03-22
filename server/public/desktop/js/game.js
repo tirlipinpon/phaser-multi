@@ -1,6 +1,6 @@
 var game;
 var text; //
-var initialTime = 3; //
+var initialTime = 3; // s
 var timedEvent = null; //
 var healthBars = {}; //
 var scores = {}; //
@@ -12,6 +12,9 @@ var timerPowerUp; //
 var timeEventPowerUp = null; //
 var globalSpeed = 0; //
 const positionPlayerExtra = [0, 100, 300, 500, 700];
+var extraTimeByPlayer = 120; // s
+var delayCreationPowerUp = 5000; // ms
+var delayToRemovePowerUp = 5000; // ms
 
 window.onload = function () {
     var config = {
@@ -58,7 +61,7 @@ function preload() {
     self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 128, frameHeight: 128 });
     self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/small-beam.png', {frameWidth: 16, frameHeight: 64});
     self.load.spritesheet('beam2', '/public/desktop/assets/spritesheets/large-beam.png', {frameWidth: 32, frameHeight: 64});
-    self.load.spritesheet('beam3', '/public/desktop/assets/spritesheets/small-beam.png', {frameWidth: 16, frameHeight: 64});
+    self.load.spritesheet('beam3', '/public/desktop/assets/spritesheets/small-beam.png', {frameWidth: 16, frameHeight: 128});
     self.load.spritesheet('power-up', '/public/desktop/assets/spritesheets/power-up.png', { frameWidth: 64, frameHeight: 64 });
     self.load.atlas('flares', '/public/desktop/assets/flares.png', '/public/desktop/assets/flares.json');
     self.numberPlayers = getText(self);
@@ -135,11 +138,11 @@ function socketOn() {
         playersGroup.getChildren().forEach(function (player) {
             if (playerInfo.id === player.id && player.active) {
                 if (player.powerUp === 'gray_anim') {
-                    new Beam(self, player, 'beam', 1);
+                    new Beam(self, player, 'beam3', 1); // double beam
                 } else if (player.powerUp === 'red_anim') {
-                    new Beam(self, player, 'beam2', 1);
+                    new Beam(self, player, 'beam2', 1); // big beam
                 } else {
-                    new Beam(self, player, 'beam3', 1);
+                    new Beam(self, player, 'beam', 1);
                 }
             }
         });
@@ -254,7 +257,7 @@ function onEventCountdown() {
         gameStarted = true;
         // duplicateEnemies();
         drawTimeEndCountdown();
-        timeEventPowerUp = self.time.addEvent({delay: 4000, callback: createPowerUp, callbackScope: this, loop: true});
+        timeEventPowerUp = self.time.addEvent({delay: delayCreationPowerUp, callback: createPowerUp, callbackScope: this, loop: true});
         socket.emit('desktop game started');
     } else {
         text.setText(formatTime(initialTime));
@@ -415,15 +418,16 @@ function zeroPad(number, size) {
 }
 //power up
 function createPowerUp() {
-    if (powerUps.getChildren().length < 1) {
+    if (true || powerUps.getChildren().length < 1) {
         var powerUp = self.physics.add.sprite(64, 64, 'power-up');
+        powerUp.id = powerUps.getChildren().length+1;
         powerUps.add(powerUp);
         powerUp.setRandomPosition(0, 0, self.game.config.width, 50);
 
         if (Math.random() > 0.5) {
-            powerUp.play('red_anim');
+            powerUp.play('red_anim'); // big beam
         } else {
-            powerUp.play('gray_anim');
+            powerUp.play('gray_anim'); // double beam gray_anim
         }
         powerUp.setVelocity(100, 400);
         powerUp.setCollideWorldBounds(false);
@@ -437,14 +441,19 @@ function pickPowerUp(player, powerUp) {
     if (timerPowerUp) {
         timerPowerUp.remove();
     }
-    if (powerUp.anims.currentAnim.key === 'gray_anim') {
-        player.powerUp = 'gray_anim';
-        timerPowerUp = self.time.delayedCall(5000, function () {
-            player.powerUp = null;
-        }, [], this);
-    } else if (powerUp.anims.currentAnim.key === 'red_anim') {
-        player.powerUp = 'red_anim';
-        timerPowerUp = self.time.delayedCall(5000, function () {
+    setPlayerPowerUpAndDelayToRemove(powerUp, player, 'gray_anim');
+    setPlayerPowerUpAndDelayToRemove(powerUp, player, 'red_anim');
+    powerUps.getChildren().forEach(function (pu) {
+        if (pu.id === powerUp.id) {
+            powerUp.destroy();
+        }
+    });
+
+}
+function setPlayerPowerUpAndDelayToRemove(powerUp, player, witchPower) {
+    if (powerUp.anims.currentAnim.key === witchPower) {
+        player.powerUp = witchPower;
+        timerPowerUp = self.time.delayedCall(delayToRemovePowerUp, function () {
             player.powerUp = null;
         }, [], this);
     }
@@ -534,7 +543,7 @@ function addPlayerToPhaser(self, playerInfo) {
     // player.play('player_anim');
     setTintToPlayer(player);
     playersGroup.add(player);
-    timeGame += 30;
+    timeGame += extraTimeByPlayer;
     self.physics.add.overlap(player.projectilesGroup, enemies, hitEnemy, null, this);
     self.physics.add.collider(player.projectilesGroup, powerUps, function (projectile, powerUp) {
         projectile.destroy();
@@ -549,11 +558,11 @@ function addParticles(player) {
     particles = self.add.particles('flares');
     var emitter = particles.createEmitter({
         frame: player.color,
-        lifespan: 500,
-        y: { min: 25, max: 50 },
+        lifespan: 300,
+        y: { min: 50, max: 50 },
         speedY: { min: 200, max: 400 },
         gravityY: 1200,
-        scale: { start: 0.4, end: 0 },
+        scale: { start: 0.6, end: 0 },
         quantity: 2,
         blendMode: 'ADD'
     });
@@ -571,7 +580,7 @@ function removePlayerFromPhaser(self, playerId) {
             player.particles.destroy();
             player.destroy();
             if (!gameStarted) {
-                timeGame -= 30;
+                timeGame -= extraTimeByPlayer;
             }
         }
     });
