@@ -95,9 +95,11 @@ function create() {
     self.parallax_2 = setParallax(self.game.config.width - 50, 0, 50, 'parallax_2');
     enemies = self.physics.add.group();
     playersGroup = self.add.group();
+    // self.physics.add.collider(playersGroup);
     powerUps = self.physics.add.group();
     createAnims();
     socketOn();
+
 }
 
 // game general
@@ -542,7 +544,6 @@ function addPlayerToPhaser(self, playerInfo) {
     player.setDepth(2);
     // player.play('player_anim');
     setTintToPlayer(player);
-    playersGroup.add(player);
     timeGame += extraTimeByPlayer;
     self.physics.add.overlap(player.projectilesGroup, enemies, hitEnemy, null, this);
     self.physics.add.collider(player.projectilesGroup, powerUps, function (projectile, powerUp) {
@@ -552,6 +553,7 @@ function addPlayerToPhaser(self, playerInfo) {
     self.physics.add.overlap(playersGroup, enemies, this.hurtPlayer, null, this);
     // particles
     addParticles(player);
+    playersGroup.add(player);
 
 }
 function addParticles(player) {
