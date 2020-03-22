@@ -252,7 +252,7 @@ function onEventCountdown() {
         timedEvent.destroy();
         text.destroy();
         gameStarted = true;
-        duplicateEnemies();
+        // duplicateEnemies();
         drawTimeEndCountdown();
         timeEventPowerUp = self.time.addEvent({delay: 4000, callback: createPowerUp, callbackScope: this, loop: true});
         socket.emit('desktop game started');
@@ -309,11 +309,11 @@ function resetGame() {
         enemy.destroy();
     });
     playersGroup.getChildren().forEach(function(player) {
+        player.particles.destroy();
         player.destroy();
     });
     socket.emit('desktop game ended');
 }
-
 // decors
 function setParallax(x, y, size, name) {
     this.parallax = self.add.tileSprite(x, y, size, self.game.config.height, name);
@@ -413,7 +413,6 @@ function zeroPad(number, size) {
     }
     return stringNumber;
 }
-
 //power up
 function createPowerUp() {
     if (powerUps.getChildren().length < 1) {
@@ -450,7 +449,6 @@ function pickPowerUp(player, powerUp) {
         }, [], this);
     }
 }
-
 // player
 function movePlayerManager(player, action) {
     if (action === 'left') {
@@ -532,6 +530,7 @@ function addPlayerToPhaser(self, playerInfo) {
     player.score = playerInfo.score;
     player.projectilesGroup = self.add.group();
     player.setCollideWorldBounds(true);
+    player.setDepth(2);
     // player.play('player_anim');
     setTintToPlayer(player);
     playersGroup.add(player);
@@ -550,13 +549,15 @@ function addParticles(player) {
     particles = self.add.particles('flares');
     var emitter = particles.createEmitter({
         frame: player.color,
-        speed: 100,
-        gravityY: 950,
-        scale: { start: .2, end: 0 },
+        lifespan: 500,
+        y: { min: 25, max: 50 },
+        speedY: { min: 200, max: 400 },
+        gravityY: 1200,
+        scale: { start: 0.4, end: 0 },
         quantity: 2,
         blendMode: 'ADD'
     });
-    particles.setDepth(0);
+    particles.setDepth(1);
     emitter.startFollow(player);
     player.particles = particles;
 }
@@ -619,7 +620,7 @@ function duplicateEnemies() {
 }
 function duplicateEnemiesByTime(time) {
     if (time === 0) {
-        duplicateEnemies()
+        // duplicateEnemies()
     }
 }
 function moveShip(ship, speed) {
