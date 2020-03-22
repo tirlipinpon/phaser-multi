@@ -89,8 +89,8 @@ function create() {
     self.parallax_1 = setParallax(0, 0, 50, 'parallax_1');
     self.parallax_2 = setParallax(self.game.config.width - 50, 0, 50, 'parallax_2');
     enemies = self.physics.add.group();
-    playersGroup = self.add.group();
-    // self.physics.add.collider(playersGroup);
+    playersGroup = self.physics.add.group();
+    self.physics.add.collider(playersGroup);
     powerUps = self.physics.add.group();
     createAnims();
     socketOn();
@@ -529,6 +529,7 @@ function resetPlayer(player) {
 }
 function addPlayerToPhaser(self, playerInfo) {
     const player = self.physics.add.sprite(positionPlayerExtra[playerInfo.position], playerInfo.y, 'player');
+    playersGroup.add(player);
     player.id = playerInfo.id;
     player.color = playerInfo.color;
     player.position = playerInfo.position;
@@ -548,8 +549,6 @@ function addPlayerToPhaser(self, playerInfo) {
     self.physics.add.overlap(playersGroup, enemies, this.hurtPlayer, null, this);
     // particles
     addParticles(player);
-    playersGroup.add(player);
-
 }
 function addParticles(player) {
     particles = self.add.particles('flares');
