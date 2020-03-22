@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5cd5250-1765-4680-b5c7-24d984021407" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/desktop/js/game.js" afterPath="$PROJECT_DIR$/server/public/desktop/js/game.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,8 +95,8 @@
               <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="321">
-                      <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="88" selection-end-column="5" />
+                    <state relative-caret-position="300">
+                      <caret line="69" column="20" lean-forward="false" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
                       <folding>
                         <element signature="e#484#1150#0" expanded="false" />
                         <element signature="e#503#1087#0" expanded="false" />
@@ -105,26 +104,26 @@
                         <element signature="e#915#941#0" expanded="false" />
                         <element signature="n#!!block;n#preload#0" expanded="false" />
                         <element signature="n#!!block;n#socketOn#0" expanded="false" />
-                        <element signature="e#4219#4325#0" expanded="false" />
-                        <element signature="e#4386#4738#0" expanded="false" />
-                        <element signature="e#4800#5022#0" expanded="false" />
-                        <element signature="e#5079#5673#0" expanded="false" />
-                        <element signature="e#5152#5667#0" expanded="false" />
-                        <element signature="e#5736#6247#0" expanded="false" />
-                        <element signature="e#6310#6360#0" expanded="false" />
-                        <element signature="e#6432#6683#0" expanded="false" />
+                        <element signature="e#4027#4133#0" expanded="false" />
+                        <element signature="e#4194#4546#0" expanded="false" />
+                        <element signature="e#4608#4830#0" expanded="false" />
+                        <element signature="e#4887#5481#0" expanded="false" />
+                        <element signature="e#4960#5475#0" expanded="false" />
+                        <element signature="e#5544#6055#0" expanded="false" />
+                        <element signature="e#6118#6168#0" expanded="false" />
+                        <element signature="e#6240#6491#0" expanded="false" />
                         <element signature="n#!!block;n#createAnims#0" expanded="false" />
-                        <element signature="e#6735#7025#0" expanded="false" />
-                        <element signature="e#7050#7341#0" expanded="false" />
-                        <element signature="e#7366#7657#0" expanded="false" />
-                        <element signature="e#8000#8327#0" expanded="false" />
-                        <element signature="e#8352#8641#0" expanded="false" />
-                        <element signature="e#8666#8957#0" expanded="false" />
-                        <element signature="e#8982#9273#0" expanded="false" />
-                        <element signature="e#9298#9645#0" expanded="false" />
-                        <element signature="e#9406#9458#0" expanded="false" />
-                        <element signature="e#9670#10016#0" expanded="false" />
-                        <element signature="e#9777#9829#0" expanded="false" />
+                        <element signature="e#6543#6833#0" expanded="false" />
+                        <element signature="e#6858#7149#0" expanded="false" />
+                        <element signature="e#7174#7465#0" expanded="false" />
+                        <element signature="e#7808#8135#0" expanded="false" />
+                        <element signature="e#8160#8449#0" expanded="false" />
+                        <element signature="e#8474#8765#0" expanded="false" />
+                        <element signature="e#8790#9081#0" expanded="false" />
+                        <element signature="e#9106#9453#0" expanded="false" />
+                        <element signature="e#9214#9266#0" expanded="false" />
+                        <element signature="e#9478#9824#0" expanded="false" />
+                        <element signature="e#9585#9637#0" expanded="false" />
                         <element signature="n#!!block;n#getRandomX#0" expanded="false" />
                         <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
                         <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
@@ -142,15 +141,15 @@
                         <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
                         <element signature="n#!!block;n#zeroPad#0" expanded="false" />
                         <element signature="n#!!block;n#createPowerUp#0" expanded="false" />
-                        <element signature="e#16561#16622#0" expanded="false" />
-                        <element signature="e#16628#16703#0" expanded="false" />
+                        <element signature="e#16369#16430#0" expanded="false" />
+                        <element signature="e#16436#16511#0" expanded="false" />
                         <element signature="n#!!block;n#pickPowerUp#0" expanded="false" />
                         <element signature="n#!!block;n#setPlayerPowerUpAndDelayToRemove#0" expanded="false" />
                         <element signature="n#!!block;n#movePlayerManager#0" expanded="false" />
                         <element signature="n#!!block;n#setNewPositionPlayers#0" expanded="false" />
                         <element signature="n#!!block;n#hurtPlayer#0" expanded="false" />
                         <element signature="n#!!block;n#resetPlayer#0" expanded="false" />
-                        <element signature="e#20515#20552#0" expanded="false" />
+                        <element signature="e#20323#20360#0" expanded="false" />
                         <element signature="n#!!block;n#addParticles#0" expanded="false" />
                         <element signature="n#!!block;n#setTintToPlayer#0" expanded="false" />
                         <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
@@ -287,7 +286,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -300,108 +298,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="desktop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phaser-4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -753,11 +654,12 @@
       <workItem from="1584812554411" duration="18388000" />
       <workItem from="1584867981355" duration="7798000" />
       <workItem from="1584877164644" duration="7087000" />
+      <workItem from="1584886707304" duration="9000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237500000" />
+    <option name="totallyTimeSpent" value="237509000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="0" />
@@ -777,7 +679,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.095933266" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13006397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13113007" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -883,26 +785,26 @@
             <element signature="e#915#941#0" expanded="false" />
             <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#socketOn#0" expanded="false" />
-            <element signature="e#4219#4325#0" expanded="false" />
-            <element signature="e#4386#4738#0" expanded="false" />
-            <element signature="e#4800#5022#0" expanded="false" />
-            <element signature="e#5079#5673#0" expanded="false" />
-            <element signature="e#5152#5667#0" expanded="false" />
-            <element signature="e#5736#6247#0" expanded="false" />
-            <element signature="e#6310#6360#0" expanded="false" />
-            <element signature="e#6432#6683#0" expanded="false" />
+            <element signature="e#4027#4133#0" expanded="false" />
+            <element signature="e#4194#4546#0" expanded="false" />
+            <element signature="e#4608#4830#0" expanded="false" />
+            <element signature="e#4887#5481#0" expanded="false" />
+            <element signature="e#4960#5475#0" expanded="false" />
+            <element signature="e#5544#6055#0" expanded="false" />
+            <element signature="e#6118#6168#0" expanded="false" />
+            <element signature="e#6240#6491#0" expanded="false" />
             <element signature="n#!!block;n#createAnims#0" expanded="false" />
-            <element signature="e#6735#7025#0" expanded="false" />
-            <element signature="e#7050#7341#0" expanded="false" />
-            <element signature="e#7366#7657#0" expanded="false" />
-            <element signature="e#8000#8327#0" expanded="false" />
-            <element signature="e#8352#8641#0" expanded="false" />
-            <element signature="e#8666#8957#0" expanded="false" />
-            <element signature="e#8982#9273#0" expanded="false" />
-            <element signature="e#9298#9645#0" expanded="false" />
-            <element signature="e#9406#9458#0" expanded="false" />
-            <element signature="e#9670#10016#0" expanded="false" />
-            <element signature="e#9777#9829#0" expanded="false" />
+            <element signature="e#6543#6833#0" expanded="false" />
+            <element signature="e#6858#7149#0" expanded="false" />
+            <element signature="e#7174#7465#0" expanded="false" />
+            <element signature="e#7808#8135#0" expanded="false" />
+            <element signature="e#8160#8449#0" expanded="false" />
+            <element signature="e#8474#8765#0" expanded="false" />
+            <element signature="e#8790#9081#0" expanded="false" />
+            <element signature="e#9106#9453#0" expanded="false" />
+            <element signature="e#9214#9266#0" expanded="false" />
+            <element signature="e#9478#9824#0" expanded="false" />
+            <element signature="e#9585#9637#0" expanded="false" />
             <element signature="n#!!block;n#getRandomX#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
@@ -920,15 +822,15 @@
             <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
             <element signature="n#!!block;n#zeroPad#0" expanded="false" />
             <element signature="n#!!block;n#createPowerUp#0" expanded="false" />
-            <element signature="e#16561#16622#0" expanded="false" />
-            <element signature="e#16628#16703#0" expanded="false" />
+            <element signature="e#16369#16430#0" expanded="false" />
+            <element signature="e#16436#16511#0" expanded="false" />
             <element signature="n#!!block;n#pickPowerUp#0" expanded="false" />
             <element signature="n#!!block;n#setPlayerPowerUpAndDelayToRemove#0" expanded="false" />
             <element signature="n#!!block;n#movePlayerManager#0" expanded="false" />
             <element signature="n#!!block;n#setNewPositionPlayers#0" expanded="false" />
             <element signature="n#!!block;n#hurtPlayer#0" expanded="false" />
             <element signature="n#!!block;n#resetPlayer#0" expanded="false" />
-            <element signature="e#20515#20552#0" expanded="false" />
+            <element signature="e#20323#20360#0" expanded="false" />
             <element signature="n#!!block;n#addParticles#0" expanded="false" />
             <element signature="n#!!block;n#setTintToPlayer#0" expanded="false" />
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />
@@ -1195,8 +1097,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/public/desktop/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="88" selection-end-column="5" />
+        <state relative-caret-position="300">
+          <caret line="69" column="20" lean-forward="false" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
           <folding>
             <element signature="e#484#1150#0" expanded="false" />
             <element signature="e#503#1087#0" expanded="false" />
@@ -1204,26 +1106,26 @@
             <element signature="e#915#941#0" expanded="false" />
             <element signature="n#!!block;n#preload#0" expanded="false" />
             <element signature="n#!!block;n#socketOn#0" expanded="false" />
-            <element signature="e#4219#4325#0" expanded="false" />
-            <element signature="e#4386#4738#0" expanded="false" />
-            <element signature="e#4800#5022#0" expanded="false" />
-            <element signature="e#5079#5673#0" expanded="false" />
-            <element signature="e#5152#5667#0" expanded="false" />
-            <element signature="e#5736#6247#0" expanded="false" />
-            <element signature="e#6310#6360#0" expanded="false" />
-            <element signature="e#6432#6683#0" expanded="false" />
+            <element signature="e#4027#4133#0" expanded="false" />
+            <element signature="e#4194#4546#0" expanded="false" />
+            <element signature="e#4608#4830#0" expanded="false" />
+            <element signature="e#4887#5481#0" expanded="false" />
+            <element signature="e#4960#5475#0" expanded="false" />
+            <element signature="e#5544#6055#0" expanded="false" />
+            <element signature="e#6118#6168#0" expanded="false" />
+            <element signature="e#6240#6491#0" expanded="false" />
             <element signature="n#!!block;n#createAnims#0" expanded="false" />
-            <element signature="e#6735#7025#0" expanded="false" />
-            <element signature="e#7050#7341#0" expanded="false" />
-            <element signature="e#7366#7657#0" expanded="false" />
-            <element signature="e#8000#8327#0" expanded="false" />
-            <element signature="e#8352#8641#0" expanded="false" />
-            <element signature="e#8666#8957#0" expanded="false" />
-            <element signature="e#8982#9273#0" expanded="false" />
-            <element signature="e#9298#9645#0" expanded="false" />
-            <element signature="e#9406#9458#0" expanded="false" />
-            <element signature="e#9670#10016#0" expanded="false" />
-            <element signature="e#9777#9829#0" expanded="false" />
+            <element signature="e#6543#6833#0" expanded="false" />
+            <element signature="e#6858#7149#0" expanded="false" />
+            <element signature="e#7174#7465#0" expanded="false" />
+            <element signature="e#7808#8135#0" expanded="false" />
+            <element signature="e#8160#8449#0" expanded="false" />
+            <element signature="e#8474#8765#0" expanded="false" />
+            <element signature="e#8790#9081#0" expanded="false" />
+            <element signature="e#9106#9453#0" expanded="false" />
+            <element signature="e#9214#9266#0" expanded="false" />
+            <element signature="e#9478#9824#0" expanded="false" />
+            <element signature="e#9585#9637#0" expanded="false" />
             <element signature="n#!!block;n#getRandomX#0" expanded="false" />
             <element signature="n#!!block;n#setTimerStartGame#0" expanded="false" />
             <element signature="n#!!block;n#onEventCountdown#0" expanded="false" />
@@ -1241,15 +1143,15 @@
             <element signature="n#!!block;n#drawTimeEndCountdown#0" expanded="false" />
             <element signature="n#!!block;n#zeroPad#0" expanded="false" />
             <element signature="n#!!block;n#createPowerUp#0" expanded="false" />
-            <element signature="e#16561#16622#0" expanded="false" />
-            <element signature="e#16628#16703#0" expanded="false" />
+            <element signature="e#16369#16430#0" expanded="false" />
+            <element signature="e#16436#16511#0" expanded="false" />
             <element signature="n#!!block;n#pickPowerUp#0" expanded="false" />
             <element signature="n#!!block;n#setPlayerPowerUpAndDelayToRemove#0" expanded="false" />
             <element signature="n#!!block;n#movePlayerManager#0" expanded="false" />
             <element signature="n#!!block;n#setNewPositionPlayers#0" expanded="false" />
             <element signature="n#!!block;n#hurtPlayer#0" expanded="false" />
             <element signature="n#!!block;n#resetPlayer#0" expanded="false" />
-            <element signature="e#20515#20552#0" expanded="false" />
+            <element signature="e#20323#20360#0" expanded="false" />
             <element signature="n#!!block;n#addParticles#0" expanded="false" />
             <element signature="n#!!block;n#setTintToPlayer#0" expanded="false" />
             <element signature="n#!!block;n#removePlayerFromPhaser#0" expanded="false" />

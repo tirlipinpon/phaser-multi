@@ -68,11 +68,6 @@ function preload() {
 }
 function update() {
     var self = this;
-    // if (text) {
-    //     console.log(elapsed.getProgress().toString().substr(0, 4))
-    //     text.setText('Event.progress: ' + elapsed.getProgress().toString().substr(0, 4));
-    // }
-
     if (gameStarted) {
         this.background.tilePositionY -= 0.5;
         this.parallax_1.tilePositionY -= 1.5;
