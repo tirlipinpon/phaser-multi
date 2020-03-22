@@ -25,7 +25,7 @@ const config = {
 };
 var currentDesktop = null;
 var players = {};
-var playerColor = ['red', 'green', 'blue', 'pink'];
+var playerColor = ['red', 'green', 'blue', 'yellow'];
 var playerUsedColor = [];
 var currentPosition = 1;
 var gameStarted = false;
@@ -115,7 +115,7 @@ window.gameLoaded();
 function initParameters() {
     currentDesktop = null;
     players = {};
-    playerColor = ['red', 'green', 'blue', 'pink'];
+    playerColor = ['red', 'green', 'blue', 'yellow'];
     playerUsedColor = [];
     currentPosition = 1;
     gameStarted = false;

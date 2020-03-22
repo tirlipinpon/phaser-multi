@@ -54,7 +54,7 @@ function preload() {
     self.load.spritesheet('ship', '/public/desktop/assets/spritesheets/ship.png', {frameWidth: 128, frameHeight: 128});
     self.load.spritesheet('ship2', '/public/desktop/assets/spritesheets/ship2.png', {frameWidth: 128, frameHeight: 192});
     self.load.spritesheet('ship3', '/public/desktop/assets/spritesheets/ship3.png', {frameWidth: 128, frameHeight: 256});
-    self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 128, frameHeight: 256});
+    self.load.spritesheet('player', '/public/desktop/assets/spritesheets/player.png', {frameWidth: 128, frameHeight: 81});
     self.load.spritesheet('explosion', '/public/desktop/assets/spritesheets/explosion.png', {frameWidth: 128, frameHeight: 128 });
     self.load.spritesheet('beam', '/public/desktop/assets/spritesheets/small-beam.png', {frameWidth: 16, frameHeight: 64});
     self.load.spritesheet('beam2', '/public/desktop/assets/spritesheets/large-beam.png', {frameWidth: 32, frameHeight: 64});
@@ -93,7 +93,6 @@ function create() {
     enemies = self.physics.add.group();
     playersGroup = self.add.group();
     powerUps = self.physics.add.group();
-    particles = self.add.particles('flares');
     createAnims();
     socketOn();
 }
@@ -379,8 +378,8 @@ function drawHealthBar(self, life, x, color, id, position) {
         color = 0x00ff00;
     } else if (color === 'blue') {
         color = 0x0000ff;
-    } else if (color === 'pink') {
-        color = 0xff03b2;
+    } else if (color === 'yellow') {
+        color = 0xefff00;
     } else {
         color = 0xffffff;
     }
@@ -465,7 +464,6 @@ function movePlayerManager(player, action) {
     } else if (action === 'down') {
         player.setVelocityY(200);
     }
-    player.particles.setPosition(player.x, player.y)
 }
 function setNewPositionPlayers(playerInfo) {
     if (playerInfo) {
@@ -477,6 +475,7 @@ function setNewPositionPlayers(playerInfo) {
                 removeScore(player.id);
                 drawHealthBar(self, player.health, player.x, player.color, player.id, player.position);
                 drawScores(self, player.x, player.id, player.position);
+                setTintToPlayer(player);
             }
         });
     }
@@ -533,7 +532,8 @@ function addPlayerToPhaser(self, playerInfo) {
     player.score = playerInfo.score;
     player.projectilesGroup = self.add.group();
     player.setCollideWorldBounds(true);
-    player.play('player_anim');
+    // player.play('player_anim');
+    setTintToPlayer(player);
     playersGroup.add(player);
     timeGame += 30;
     self.physics.add.overlap(player.projectilesGroup, enemies, hitEnemy, null, this);
@@ -542,21 +542,32 @@ function addPlayerToPhaser(self, playerInfo) {
     });
     self.physics.add.overlap(player, powerUps, this.pickPowerUp, null, this);
     self.physics.add.overlap(playersGroup, enemies, this.hurtPlayer, null, this);
+    // particles
+    addParticles(player);
 
-    console.log(player.x);
-
-
+}
+function addParticles(player) {
+    particles = self.add.particles('flares');
     var emitter = particles.createEmitter({
+        frame: player.color,
         speed: 100,
-        scale: { start: 1, end: 0 },
+        gravityY: 950,
+        scale: { start: .2, end: 0 },
+        quantity: 2,
         blendMode: 'ADD'
     });
     particles.setDepth(0);
     emitter.startFollow(player);
+    player.particles = particles;
+}
+function setTintToPlayer(player) {
+    player.setTint(0xffffff, 0xffffff, mapColorToExa(player.color), mapColorToExa(player.color));
+
 }
 function removePlayerFromPhaser(self, playerId) {
     playersGroup.getChildren().forEach(function (player) {
         if (playerId === player.id) {
+            player.particles.destroy();
             player.destroy();
             if (!gameStarted) {
                 timeGame -= 30;
@@ -567,17 +578,42 @@ function removePlayerFromPhaser(self, playerId) {
         gameStarted = false;
     }
 }
+function mapColorToExa(color) {
+    switch(color) {
+        case 'red':
+            return 0xff0000;
+            break;
+        case 'green':
+            return 0x00ff00;
+            break;
+        case 'blue':
+            return 0x0000ff;
+            break;
+        case 'yellow':
+            return 0xefff00;
+            break;
+        case 'white':
+            return 0xffffff;
+            break;
+        default: return 0x000000;
+    }
 
+}
 // enemies / ship
 function resetShipPos(ship) {
     ship.y = 0;
     ship.x = getRandomX(50, this.game.config.width-50);
 }
 function duplicateEnemies() {
+    var iEnemy = 1;
     for (var i = 1; i < 4 * playersGroup.getChildren().length; i++) {
-        var ship = self.add.sprite(getRandomX(0, self.game.config.width), -50, 'ship' + i);
-        ship.speed = i;
-        ship.play('ship' + i + '_anim');
+        var ship = self.add.sprite(getRandomX(0, self.game.config.width), -50, 'ship' + iEnemy);
+        ship.speed = iEnemy;
+        iEnemy++;
+        if(iEnemy > 3) {
+            iEnemy = 1;
+        }
+        ship.play('ship' + iEnemy + '_anim');
         enemies.add(ship);
     }
 }

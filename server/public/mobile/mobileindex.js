@@ -17,7 +17,6 @@ window.onload = function () {
     noSleep.disable();
     const buttonJoin = document.getElementsByTagName('button')[0];
     const buttonStart = document.getElementsByTagName('button')[1];
-    const buttonShoot = document.getElementsByTagName('button')[2];
     const logs = document.getElementsByTagName('span')[0];
     const logsBeta = document.getElementsByTagName('span')[0];
     const logsAlpha = document.getElementsByTagName('span')[0];
@@ -65,7 +64,6 @@ window.onload = function () {
             canConnect = getCanConnect;
             if (!canConnect) {
                 buttonJoin.style.visibility = 'hidden';
-                buttonShoot.style.visibility = 'hidden';
                 logs.innerHTML = 'party already started waiting for new room...';
             }
         });
